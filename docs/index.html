@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>iMESc</title>
+
+<script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<h2 id="toc-title">iMESc</h2>
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">iMESc</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">iMESc</h1>
+
+</div>
+
+
+<div id="introduction" class="section level1 boxtext" number="1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<div style="padding-left: 20px">
+<p><strong><br />
+</strong><span
+style="font-family: &#39;Alata&#39;, sans-serif;">iMESc</span> is a
+shiny-based application which implements a range of Machine Learning
+(ML) algorithms for analyzing environmental data. Features include data
+pre-processing, classical statistics, supervised and unsupervised ML
+algorithms, interactive data visualization and saving the results in a
+single file. Throughout the app, data input and output are organized in
+modules enabling the creation of multiple ML pipelines.</p>
+<p>The app is entirely written in the R programming language and relies
+on several other R packages (see section X for the full list of
+packages).</p>
+</div>
+</div>
+<hr />
+<div id="setup" class="section level1 boxtext" number="2">
+<h1><span class="header-section-number">2</span> Setup</h1>
+<div class="numbold">
+<ol style="list-style-type: decimal">
+<li><p>Install <a href="https://cran.r-project.org/">R</a> and <a
+href="https://www.rstudio.com/products/rstudio/download/">RStudio</a> if
+you haven’t done so already;</p></li>
+<li><p>Once installed, open R studio;</p></li>
+<li><p>Install shiny package if it is not already installed;</p></li>
+</ol>
+</div>
+<pre class="r"><code>install.packages(&#39;shiny&#39;)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><div class="numbold">
+<p>Run the code below;</p>
+</div></li>
+</ol>
+<pre class="r"><code>shiny::runGitHub(&#39;iMESc&#39;,&#39;DaniloCVieira&#39;, ref=&#39;main&#39;)</code></pre>
+<p>The app will automatically install the required packages, and may
+take some time if this is your first time using the application. The
+next time, it shouldn’t take more than a few seconds.</p>
+</div>
+<hr />
+<div id="layout" class="section level1 boxtext" number="3">
+<h1><span class="header-section-number">3</span> Layout</h1>
+<p><span style="font-family: &#39;Alata&#39;, sans-serif;">iMESc</span>
+is built using a dashboard layout: a header composed by the
+<strong>Pre-Processing Tools (1)</strong>, a <strong>Sidebar
+(2)</strong> composed by menus , and a <strong>Main-Panel (3)</strong>
+for visualizing outputs. To ensure that <span
+style="font-family: &#39;Alata&#39;, sans-serif;">iMESc</span> content
+fits nicely on the screen, we recommend a landscape minimum resolution
+of 1377 x 768 pixels. Get started by <a
+href="create-a-datalist">Creating a Datalist</a> using the <img
+src="images/create_datalist_button.png"
+style="border: 1px solid #05668D;" width="21" height="15" /> button from
+the <a href="#pre-processing-tools">Pre-Processing tools</a>.</p>
+<div style="border: 1px dashed lightgray; padding: 5px">
+<p><img src="images/layout.png" /></p>
+</div>
+</div>
+<hr />
+<div id="pre-processing-tools" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Pre-processing
+Tools</h1>
+<p><img src="images/preprocessing_tools.png" /></p>
+<div id="create-a-datalist" class="section level2 boxtext" number="4.1">
+<h2><span class="header-section-number">4.1</span> <img
+src="images/create_datalist_button.png"
+style="border: 1px solid #05668D;" width="44" height="31" /> Create a
+Datalist</h2>
+<div style="padding-left: 20px">
+<div class="boxtext">
+<p><span style="font-family: &#39;Alata&#39;, sans-serif;">iMESc</span>
+implements its analytic tasks on <strong>Datalists</strong>. A Datalist
+is composed by two mandatory spreadsheets, called
+<strong>Numeric-Attribute</strong> and
+<strong>Factor-Attribute</strong>. All analyses available at <span
+style="font-family: &#39;Alata&#39;, sans-serif;">iMESc</span> will
+require a Datalist created by the user, either uploaded or using example
+data.</p>
+</div>
+<div style="display: flex;">
+<div>
+<div style="padding: 20px; min-width: 200px;">
+<ul>
+<li><strong>Numeric Attribute</strong>: creation of a Datalist requires
+at least one csv file to be uploaded as Numeric-Attribute, where rows
+are the observations, columns are the variables <span
+style="color: SeaGreen"><em>The first column must contain the
+observation labels.</em></span>Columns containing characters are
+automatically transferred to the Factor-Attribute.</li>
+<li><strong>Factor-Attribute</strong> is also a csv file, and must
+contain the factors for your data, which will be used for labeling,
+grouping and viewing the results. It can contain as many factors as you
+want. If no file for the Factor-Attribute is uploaded, the
+Factor-Attribute will only consist of the IDs from the
+Numeric-Attribute.</li>
+</ul>
+</div>
+</div>
+<div>
+<div style="max-width: 400px; min-width:450px; border: 1px solid gray">
+<p><img src="images/create_datalist.png" /></p>
+</div>
+</div>
+</div>
+<div style="margin-top: 15px">
+<p>The Datalist may also include 3 additional files for spatializing the
+results: <strong>Coords-Attribute</strong>,
+<strong>Base-Shape-Attribute</strong> and
+<strong>Layer-Shape-Attribute</strong>. The first one is mandatory for
+generating maps: a csv file containing the IDs, Longitude and Latitude
+of the observations.</p>
+<p>The Base-Shape-Attribute and Layer-Shape-Attribute are optional. Each
+is composed by a single <em>R</em> file containing the shape to be used
+to clip interpolated surfaces (e. g., an oceanic basin shape) and the
+shape to be used to be used as an additional layer (e.g., a continent
+shape), respectively. These files can be created later using the
+<strong>SHP toolbox</strong> available from <img
+src="images/cog_button.png" width="30" height="20" /> button, which
+allow the user convert shapefiles (.shp, .shx and .dbf files) into a
+single <em>R</em> file.</p>
+</div>
+</div>
+</div>
+<hr />
+<div id="use-example-data" class="section level2 boxtext" number="4.2">
+<h2><span class="header-section-number">4.2</span> Use example Data</h2>
+<div style="padding-left: 20px">
+<p>This option allows the user to insert the example data available in
+iMESc. When <a href="#create-a-datalist">creating a Datalist</a>, choose
+“use example data” from the radio-button and proceed with Datalist
+insertion. This single action inserts two Datalists from Araçá Bay
+(southeastern coast of Brazil):</p>
+<ol style="list-style-type: decimal">
+<li><p>envi_araca: 141 samples with 9 environmental variables</p></li>
+<li><p>nema_araca: 194 free-living marine nematode species (southeastern
+coast of Brazil).</p></li>
+</ol>
+<p>Both Datalists carry Coords-Attribute, Base-Shape and Layer
+Shape.</p>
+</div>
+</div>
+<hr />
+<div id="options" class="section level2 boxtext" number="4.3">
+<h2><span class="header-section-number">4.3</span> <img
+src="images/cog_button.png" style="border: 1px solid #05668D;"
+width="44" height="31" /> Options</h2>
+<div style="padding-left: 20px">
+<div style="display: flex;">
+<div>
+<div style="margin-top: 25px">
+<div style="margin-top: 25px">
+<p>This drop-down menu offers to the user a range of tools for editing
+Datalists. Among them, we highlight the <strong>Exchange
+Factor/Variables</strong> function for converting/transferring Factors
+to Numeric (binary or ordinal) and vice-verse.<br />
+<br />
+The <strong>SHP toolbox</strong> for creating <a
+href="#Shape">Base-Shapes</a>, <a href="#Shape">Layer-Shapes</a> and <a
+href="#Shape">Extra-Shape</a><a href="#Extra-Shape">s</a> is also an
+useful tool from the <img src="images/cog_button.png" width="30"
+height="20" /> button.</p>
+</div>
+</div>
+</div>
+<div>
+<div
+style="width: 220px; border: 1px solid gray; text-align: center; padding-top: 10px">
+<p><img src="images/cog.png" width="144" /></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<div id="section" class="section level2 boxtext" number="4.4">
+<h2><span class="header-section-number">4.4</span> <img
+src="images/picker.png" width="182" /> <img src="images/undo.png"
+width="31" /> <img src="images/save.png" width="31" /></h2>
+<div style="padding-left: 20px">
+<p>This group of buttons appears when using the functionalities provided
+by <img src="images/filter_obs.png" width="29" /><img
+src="images/filter_vars.png" width="29" /><img src="images/transfs.png"
+width="29" /><img src="images/imput.png" width="29" /><img
+src="images/split.png" width="29" /><img src="images/agg.png"
+width="29" />. Changes applied to the target Datalist (selected from the
+Datalist-picker), can be previewed in the <a href="#track-changes">Track
+changes</a> drop-down panel. If any changes are made, the <img
+src="images/save.png" width="15" /> button will flash blue, indicating
+that it is necessary to save the changes. The <img src="images/undo.png"
+width="15" /> button undoes all changes made.</p>
+</div>
+</div>
+<hr />
+<div id="track-changes" class="section level2 boxtext" number="4.5">
+<h2 class="boxtext"><span class="header-section-number">4.5</span> Track
+changes</h2>
+<div style="padding-left: 20px">
+<p>This group of panels shows up when using the functionalities provided
+by <img src="images/filter_obs.png" width="29" /><img
+src="images/filter_vars.png" width="29" /><img src="images/transfs.png"
+width="29" /><img src="images/imput.png" width="29" /><img
+src="images/split.png" width="29" /><img src="images/agg.png"
+width="29" />. The user can track changes in real-time via summary
+panels and histograms. We highlight the <em>Missing values</em> panel
+for checking the number of missing values per variable.</p>
+<ul>
+<li><p><strong>Changes</strong>: displays current and previous changes
+(see existing)</p></li>
+<li><p><strong>Summary</strong>: displays the number of missing values,
+rows and columns; and minimum, average, median, and maximum
+values.</p></li>
+<li><p><strong>Data</strong>: Histogram of all numerical values</p></li>
+<li><p><strong>colSums</strong>: Column sum histogram</p></li>
+<li><p><strong>rowSums</strong>: row sum historam</p></li>
+<li><p><strong>Missing values</strong>: number of missing values per
+variable.</p></li>
+</ul>
+</div>
+<hr />
+</div>
+<div id="filter-observations" class="section level2 boxtext"
+number="4.6">
+<h2><span class="header-section-number">4.6</span> <img
+src="images/filter_obs.png" style="border: 1px solid #05668D;"
+width="44" /> Filter observations</h2>
+<div style="padding: 20px">
+<ul>
+<li><p><strong>Na.omit</strong>: Remove all observations that contain
+any empty cases (NAs)</p></li>
+<li><p><strong>Match with</strong>: Restrict current Datalist to
+observations (IDs) from another Datalist</p></li>
+<li><p><strong>Filter by Factors:</strong> Link to display a Filter Tree
+structure based on the levels of the Factor-Attribute. Click in the
+nodes to expand and select the factor levels. Only available for factors
+with less than 100 levels.</p></li>
+<li><p><strong>Individual selection</strong> Link to select observations
+using Datalist IDs.</p></li>
+</ul>
+</div>
+</div>
+<hr />
+<div id="filter-variables" class="section level2 boxtext" number="4.7">
+<h2><span class="header-section-number">4.7</span> <img
+src="images/filter_vars.png" style="border: 1px solid #05668D;"
+width="44" /> Filter variables</h2>
+<div style="padding-left:20px">
+<ul>
+<li><p><strong>Value based removal</strong></p>
+<ul>
+<li><p><strong>Abund&lt;:</strong> Remove variables with an value less
+than x-percent of the total;</p></li>
+<li><p><strong>Freq&lt;:</strong> Remove variables occurring in less
+than x-percent of the number of samples;</p></li>
+<li><p><strong>Singletons:</strong> Requires a counting data. Remove
+variables occurring only once;</p></li>
+</ul></li>
+<li><p><strong>Individual Selection:</strong> Link to select variables
+using columns names.</p></li>
+</ul>
+</div>
+</div>
+<hr />
+<div id="transformations" class="section level2 boxtext" number="4.8">
+<h2><span class="header-section-number">4.8</span> <img
+src="images/transfs.png" style="border: 1px solid #05668D;"
+width="44" /> Transformations</h2>
+<div style="padding-left: 20px">
+<div id="transformation" class="section level3" number="4.8.1">
+<h3><span class="header-section-number">4.8.1</span> Transformation</h3>
+<div style="padding-left: 20px">
+<ul>
+<li><p><strong>None</strong>: No Transformation</p></li>
+<li><p><strong>Log2</strong>: logarithmic base 2 transformation as
+suggested by Anderson et al. (2006): log_b (x) + 1 for x &gt; 0, where b
+is the base of the logarithm. Zeros are left as zeros. Higher bases give
+less weight to quantities and more to presences, and logbase = Inf gives
+the presence/absence scaling. Please note this is not log(x+1). Anderson
+et al. (2006) suggested this for their (strongly) modified Gower
+distance, but the standardization can be used independently of distance
+indices.</p></li>
+<li><p><strong>Log10</strong>: logarithmic base 10 transformation as
+suggested by Anderson et al. (2006): log_b (x) + 1 for x &gt; 0, where b
+is the base of the logarithm. Zeros are left as zeros. Higher bases give
+less weight to quantities and more to presences, and logbase = Inf gives
+the presence/absence scaling. Please note this is not log(x+1). Anderson
+et al. (2006) suggested this for their (strongly) modified Gower
+distance, but the standardization can be used independently of distance
+indices.</p></li>
+<li><p><strong>Total</strong>: divide by the line (observation)
+total</p></li>
+<li><p><strong>Max</strong>: divide by column (variable)
+maximum</p></li>
+<li><p><strong>Frequency</strong>: divide by column (variable) total and
+multiply by the number of non-zero items, so that the average of
+non-zero entries is one</p></li>
+<li><p><strong>Range</strong>: standardize column (variable) values into
+range 0 … 1. If all values are constant, they will be transformed to
+0</p></li>
+<li><p><strong>Pa</strong>: scale x to presence/absence scale
+(0/1)</p></li>
+<li><p><strong>Chi.square</strong>: divide by row sums and square root
+of column sums, and adjust for square root of matrix total</p></li>
+<li><p><strong>Hellinger</strong>: square root of method =
+total</p></li>
+<li><p><strong>Sqrt2</strong>: square root</p></li>
+<li><p><strong>Sqrt4</strong>: 4th root</p></li>
+<li><p><strong>Log2(x+1</strong>): logarithmic base 2 transformation
+(x+1)</p></li>
+<li><p><strong>Log10(x+1)</strong>: logarithmic base 10 transformation
+(x+1)</p></li>
+<li><p><strong>BoxCox</strong>: Designed for non-negative responses.
+boxcox transforms nonnormally distributed data to a set of data that has
+approximately normal distribution. The Box-Cox transformation is a
+family of power transformations.</p></li>
+<li><p><strong>Yeojohson</strong>: Similar to the Box-Cox model but can
+accommodate predictors with zero and/or negative values</p></li>
+<li><p><strong>expoTrans</strong>: Exponential transformation</p></li>
+</ul>
+</div>
+</div>
+<div id="scale-and-centering" class="section level3" number="4.8.2">
+<h3><span class="header-section-number">4.8.2</span> Scale and
+Centering</h3>
+<div style="padding-left: 20px">
+<ul>
+<li><p><strong>Scale</strong>: If scale is TRUE then scaling is done by
+dividing the (centered) columns of x by their standard deviations if
+center is TRUE, and the root mean square otherwise. If scale is FALSE,
+no scaling is done.</p></li>
+<li><p><strong>Center</strong>: If center is TRUE then centering is done
+by subtracting the column means (omitting NAs) of x from their
+corresponding columns, and if center is FALSE, no centering is
+done.</p></li>
+</ul>
+</div>
+</div>
+<div id="random-rarefraction" class="section level3" number="4.8.3">
+<h3><span class="header-section-number">4.8.3</span> Random
+Rarefraction</h3>
+<ul>
+<li><div style="padding-left: 20px">
+<p>Generates one randomly rarefied community given sample size. If the
+sample size is equal to or larger than the observed number of
+individuals, the non-rarefied community will be returned</p>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+<hr />
+<div id="data-imputation" class="section level2 boxtext" number="4.9">
+<h2><span class="header-section-number">4.9</span> <img
+src="images/imput.png" style="border: 1px solid #05668D;" width="44" />
+Data imputation</h2>
+<div style="padding-left: 20px">
+<ul>
+<li><p><strong>Median/mode:</strong> Numeric-Attribute columns are
+imputed with the median; Factor-Attribute columns are imputed with the
+mode</p></li>
+<li><p><strong>Knn</strong>: k-nearest neighbor imputation is only
+available for the Numeric-Attribute. It is carried out by finding the k
+closest samples (Euclidian distance) in the dataset. This method
+automatically center and scale your data.</p></li>
+<li><p><strong>Baginpute</strong>: Only available for the
+Numeric-Attribute. Imputation via bagging fits a bagged tree model for
+each predictor (as a function of all the others). This method is simple,
+accurate and accepts missing values, but it has much higher
+computational cost.</p></li>
+<li><p><strong>MedianImpute</strong>: Only available for the
+Numeric-Attribute. Imputation via medians takes the median of each
+predictor in the training set, and uses them to fill missing values.
+This method is simple, fast, and accepts missing values, but treats each
+predictor independently, and may be inaccurate.</p></li>
+</ul>
+</div>
+<hr />
+</div>
+<div id="data-split" class="section level2 boxtext" number="4.10">
+<h2><span class="header-section-number">4.10</span> <img
+src="images/split.png" style="border: 1px solid #05668D;" width="44" />
+Data split</h2>
+<div style="padding: 20px">
+<p>Add partition as a factor in the Factor-Attribute. For the supervised
+ML methods, you can choose this partition to constrain training and
+testing data.</p>
+<ul>
+<li><p><strong>Random Sampling:</strong> simple random sampling is
+used</p></li>
+<li><p><strong>Balanced Sampling:</strong> The random sampling is done
+within the levels of a choosen factor in an attempt to balance the class
+distributions within the splits.</p></li>
+</ul>
+</div>
+</div>
+<hr />
+<div id="aggregate" class="section level2 boxtext" number="4.11">
+<h2><span class="header-section-number">4.11</span> <img
+src="images/agg.png" style="border: 1px solid #05668D;" width="44" />
+Aggregate</h2>
+<div style="padding-left: 20px">
+<p>The process involves two stages. First, collate individual cases of
+the Numeric-Attribute together with a grouping variable (unselected
+factors). Second, perform which calculation you want on each group of
+cases (selected factors). Available methods includes <em>Mean</em>,
+<em>Sum</em>, <em>Median</em>, <em>Var</em> (variance), <em>SD</em>
+(standard deviation), <em>Min</em>, <em>Max.</em></p>
+</div>
+</div>
+<hr />
+<div id="create-palette" class="section level2 boxtext" number="4.12">
+<h2><span class="header-section-number">4.12</span> <img
+src="images/palette.png" style="border: 1px solid #05668D;"
+width="44" /> Create Palette</h2>
+<p>Create customized palettes to be used along the graphical
+outputs.</p>
+</div>
+<hr />
+<div id="savepoint" class="section level2 boxtext" number="4.13">
+<h2><span class="header-section-number">4.13</span> <img
+src="images/savepoint.png" style="border: 1px solid #05668D;"
+width="44" /> Savepoint</h2>
+<div style="padding-left: 20px">
+<ul>
+<li><p><strong>Create</strong>: create a savepoint, a single R object to
+be downloaded and that can be reloaded later to restore analysis
+output.</p></li>
+<li><p><strong>Restore</strong> : Upload a savepoint (.rds file) to
+restore the dashboard.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="sidebar-menu" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Sidebar-menu</h1>
+<div id="data-bank" class="section level2 boxtext" number="5.1">
+<h2><span class="header-section-number">5.1</span> <img
+src="images/side1_databank.png" width="54" /> Data Bank</h2>
+<div style="padding-left: 20px">
+<p><img src="images/datapicker.png" width="54" />
+<strong>Datalist-Picker:</strong> Drop-down selector of the target
+Datalist</p>
+<p><img src="images/a1.png" width="54" />
+<strong>Numeric-Attribute:</strong> shows the Numeric-Attribute
+sheet</p>
+<p><img src="images/a2.png" width="54" />
+<strong>Factor-Attribute:</strong> shows the Factor-Attribute sheet</p>
+<p><img src="images/a3.png" width="54" />
+<strong>Coords-Attribute:</strong> shows the Coords-Attribute sheet</p>
+<p><img src="images/a4.png" width="54" /> <span
+id="Shape"><strong>Shapes</strong></span><strong>:</strong></p>
+<ul>
+<li><p><span id="Base-Shape"><em>Base-Shape:</em></span> the shape to be
+used to clip interpolated surfaces (e. g., an oceanic basin shape)
+;</p></li>
+<li><p><span id="Layer-Shape"><em>Layer-Shape:</em></span>the shape to
+be used to be used as an additional layer (e.g., a continent
+shape);</p></li>
+<li><p><span id="Extra-Shape"><em>Extra-Shapes:</em></span>Any
+additional shapes to be included in the Datalist (e.g. bathymetry
+lines).</p></li>
+</ul>
+<p><img src="images/a5.png" width="54" />
+<strong>SOM-Attribute:</strong> displays the summary of SOM models (<a
+href="#self-organizing-maps">unsupervised</a> and <a
+href="#self-organizing-maps-1">supervised</a>) (if saved in the target
+Datalist).</p>
+<p><img src="images/a6.png" width="54" /> <strong>NB-Attribute:</strong>
+displays the summary of <a href="#naive-bayes">NB models</a></p>
+<p><img src="images/a7.png" width="54" />
+<strong>KNN-Attribute:</strong> displays the summary of <a
+href="#k-nearest-neighbor">KNN models</a></p>
+<p><img src="images/a8.png" width="54" />
+<strong>SVM-Attribute:</strong> displays the summary of <a
+href="#support-machine-vector">SVM models</a></p>
+<p><img src="images/a9.png" width="54" /> <strong>RF-Attribute:</strong>
+displays the summary of <a href="#random-forest">RF models</a></p>
+<p><img src="images/a10.png" width="54" /> <strong>SGBOOST
+-Attribute:</strong> displays the summary of <a
+href="#stochastic-gradient-boosting">SGBOOST models</a></p>
+</div>
+</div>
+<div id="descriptive-tools" class="section level2 boxtext" number="5.2">
+<h2><span class="header-section-number">5.2</span> <img
+src="images/side2_desc.png" width="54" /> Descriptive tools</h2>
+<div style="padding-left: 20px">
+<div style="padding-left: 20px">
+<p><img src="images/datapicker.png" width="54" />
+<strong>Datalist-Picker:</strong> Drop-down menu to select the target
+Datalist</p>
+</div>
+<div id="summary" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Summary</h3>
+<div style="padding-left: 20px">
+<ul>
+<li><p><strong>Data:</strong> shows number of rows, columns and missing
+values of the Numeric-Attribute;</p></li>
+<li><p><strong>Variable</strong>: shows summary and a histogram for each
+variable in the Numeric-Attribute;</p></li>
+<li><p><strong>Factors</strong>: shows a summary of the Factor-Attribute
+and box-plot with the count of the Factors levels;</p></li>
+<li><p><strong>Datalist</strong>:: shows the Datalist
+structure.</p></li>
+</ul>
+</div>
+</div>
+<div id="ridges" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Ridges:</h3>
+<div style="padding-left: 20px">
+<ul>
+<li>Ridge plots are partially overlapping line plots that create the
+impression of a mountain range. They can be quite useful for visualizing
+changes in distributions over time or space. This function uses the <a
+href="https://rdrr.io/cran/ggridges/man/geom_ridgeline.html">geom_ridgeline</a>
+function from the <a href="https://rdrr.io/cran/ggridges/">ggridges</a>
+package.</li>
+</ul>
+</div>
+</div>
+<div id="scatter" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Scatter</h3>
+<div style="padding-left: 20px">
+<ul>
+<li>A graph in which the values of two variables are plotted along two
+axes, the pattern of the resulting points revealing any correlation
+present.;</li>
+</ul>
+</div>
+</div>
+<div id="histogram" class="section level3" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Histogram</h3>
+<div style="padding-left: 20px">
+<ul>
+<li>Numeric-Attribute column sum histogram</li>
+</ul>
+</div>
+</div>
+<div id="boxplot" class="section level3" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> Boxplot:</h3>
+<div style="padding-left: 20px">
+<ul>
+<li>Boxplot with numerous graphical options</li>
+</ul>
+</div>
+</div>
+<div id="mds" class="section level3" number="5.2.6">
+<h3><span class="header-section-number">5.2.6</span> MDS</h3>
+<div style="padding-left: 20px">
+<ul>
+<li>Nonmetric Multidimensional Scaling. This functionality uses the <a
+href="https://rdrr.io/rforge/vegan/man/metaMDS.html">metaMDS</a>
+function from <a href="https://rdrr.io/rforge/vegan/">vegan</a> package.
+It uses default arguments, with user option to choose the distance
+metric (Bray-Curtis, Euclidean and Jacquard). The user can interact with
+several graphical options, including coloring observations by a factor
+from the associated Factor-Attribute.</li>
+</ul>
+</div>
+</div>
+<div id="pca" class="section level3" number="5.2.7">
+<h3><span class="header-section-number">5.2.7</span> PCA</h3>
+<div style="padding-left: 20px">
+<ul>
+<li>Principal Component Analysis. This functionality uses the <a
+href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/prcomp">prcomp</a>
+function from R base. We recommend scaling the data before the PCA
+analysis (<a href="#scale-and-centering">Scale and Centering</a>). The
+user can interact with several graphical options, including coloring
+observations by a factor from the associated Factor-Attribute.</li>
+</ul>
+</div>
+</div>
+<div id="rda" class="section level3" number="5.2.8">
+<h3><span class="header-section-number">5.2.8</span> RDA</h3>
+<ul>
+<li><div style="padding-left: 20px">
+<p>Redundancy Analysis. This functionality uses the <a
+href="https://www.rdocumentation.org/packages/vegan/versions/2.4-2/topics/cca">rda</a>
+function from from <a href="https://rdrr.io/rforge/vegan/">vegan</a>
+package. It requires at least two Datalist for building a Y~X model. The
+results are presented in two panels:</p>
+<ul>
+<li><p>Plot with with several graphical options, such as coloring
+observations by a factor from the associated Factor-Attribute.</p></li>
+<li><p>Summary: results of the rda model- importance (constrained and
+unconstrained), variable and observation scores, linear constrains and
+biplot.</p></li>
+</ul>
+</div></li>
+</ul>
+</div>
+<div id="segrda" class="section level3" number="5.2.9">
+<h3><span class="header-section-number">5.2.9</span> segRDA</h3>
+<div style="padding-left: 20px">
+<p>This functionality implements the <a
+href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210x.13300">segRDA</a>
+workflow for modelling non-continuous linear responses of ecological
+data. The routine consists of three panels:</p>
+<ul>
+<li><p>SMW - Split Moving Windows along ordered data</p></li>
+<li><p>DP: dissimilarity profile of the SMW results for identifying
+breakpoints</p></li>
+<li><p>pwRDA: performs a piece-wise redundancy analysis using specified
+breakpoints. The results are presented in the same way as in the <a
+href="#rda">RDA</a> panel.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="spatial-tools" class="section level2 boxtext" number="5.3">
+<h2><span class="header-section-number">5.3</span> <img
+src="images/side3_map.png" width="54" /> Spatial Tools</h2>
+<div style="padding-left: 20px">
+<p>Header:<img src="images/map_header.png" /></p>
+<ul>
+<li><p><strong>Y Datalist</strong>: drop-down selector of the target
+Datalist</p></li>
+<li><p><strong>Attribute</strong>: Numeric or Factor-Atribute</p></li>
+<li><p><strong>Variable</strong>: the Variable/Factor to plot</p></li>
+<li><p><strong>Filter</strong>: constrain observations to a factor
+level</p></li>
+<li><p><strong>Level</strong>: if ‘Filter’ is not “none”, the level to
+constrain the observations.</p></li>
+</ul>
+<p>Discrete</p>
+<p>Plain</p>
+<p>3d</p>
+<p>Stacked 3d</p>
+<p>Interpolation</p>
+<p>Plain</p>
+<p>Surface</p>
+<p>Stacked 3d</p>
+<p>Raster</p>
+<p>Plain</p>
+<p>Surface</p>
+<p>Stacked 3d</p>
+</div>
+</div>
+<div id="biodiversity-tools" class="section level2 boxtext"
+number="5.4">
+<h2><span class="header-section-number">5.4</span> <img
+src="images/side4_bio.png" width="54" /> Biodiversity Tools</h2>
+<div style="padding-left: 20px">
+<p>Diversity Indexes</p>
+<p>Niche</p>
+</div>
+</div>
+<div class="boxtext">
+<div id="unsupervised-algorithms" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> <img
+src="images/side5_unsup.png" width="54" /> Unsupervised Algorithms</h2>
+</div>
+<div style="padding-left: 20px">
+<div id="self-organizing-maps" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> <img
+src="images/side6_som.png" width="54" /> Self-Organizing maps</h2>
+</div>
+<div id="hierarchical-clustering" class="section level2" number="5.7">
+<h2><span class="header-section-number">5.7</span> <img
+src="images/side7_hc.png" width="54" /> Hierarchical clustering</h2>
+</div>
+<div id="k-means" class="section level2" number="5.8">
+<h2><span class="header-section-number">5.8</span> <img
+src="images/side8_kmeans.png" width="54" /> K-means</h2>
+</div>
+</div>
+</div>
+<div style="boxtext">
+<div id="supervised-algorithms" class="section level2" number="5.9">
+<h2><span class="header-section-number">5.9</span> <img
+src="images/side9_sup.png" width="54" /> Supervised Algorithms</h2>
+</div>
+<div style="padding-left: 20px">
+<div id="naive-bayes" class="section level2" number="5.10">
+<h2><span class="header-section-number">5.10</span> <img
+src="images/side10_nb.png" width="54" /> Naive Bayes</h2>
+</div>
+<div id="support-machine-vector" class="section level2" number="5.11">
+<h2><span class="header-section-number">5.11</span> <img
+src="images/side11_svm.png" width="54" /> Support Machine Vector</h2>
+</div>
+<div id="k-nearest-neighbor" class="section level2" number="5.12">
+<h2><span class="header-section-number">5.12</span> <img
+src="images/side12_knn.png" width="54" /> K-Nearest neighbor</h2>
+</div>
+<div id="random-forest" class="section level2" number="5.13">
+<h2><span class="header-section-number">5.13</span> <img
+src="images/side13_rf.png" width="54" /> Random Forest</h2>
+</div>
+<div id="stochastic-gradient-boosting" class="section level2"
+number="5.14">
+<h2><span class="header-section-number">5.14</span> <img
+src="images/side14_sg.png" width="54" /> Stochastic Gradient
+Boosting</h2>
+</div>
+<div id="self-organizing-maps-1" class="section level2" number="5.15">
+<h2><span class="header-section-number">5.15</span> <img
+src="images/side6_som.png" width="54" /> Self-Organizing Maps</h2>
+</div>
+</div>
+</div>
+<div id="compare-and-combine-models" class="section level2 boxtext"
+number="5.16">
+<h2><span class="header-section-number">5.16</span> <img
+src="images/side15_comp.png" width="54" /> Compare and Combine
+Models</h2>
+<div style="padding: 20px">
+<p>Compare</p>
+<p>Combine</p>
+</div>
+</div>
+</div>
+<div id="main-panel" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Main-panel</h1>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

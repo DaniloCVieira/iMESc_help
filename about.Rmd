@@ -1,0 +1,6 @@
+---
+title: "About iMESc help"
+---
+
+iMESc is an open-source application, developed in R. 
+Developed by Danilo C. Vieira

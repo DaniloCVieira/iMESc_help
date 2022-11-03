@@ -1,19 +1,11 @@
 ---
-title: "iMESc"
-toc-title: "iMESc"
+title: "iMESc^help!^"
+author: "Danilo C Vieira"
 output:
-  #word_document:
-  
-  html_document:  
-    toc: yes
-
-    includes:
-
+  rmdformats::readthedown:
+    highlight: kate
     css: styles.css
-    toc_depth: 5
-    toc_float: true
-    collapsed: true
-    number_sections: true
+    toc_depth: 3
 ---
 
 ```{r, include = FALSE}
@@ -74,67 +66,120 @@ The app will automatically install the required packages, and may take some time
 ::: boxtext
 # Layout
 
-[iMESc]{style="font-family: 'Alata', sans-serif;"} is built using a dashboard layout: a header composed by the **Pre-Processing Tools (1)**, a **Sidebar (2)** composed by menus , and a **Main-Panel (3)** for visualizing outputs. To ensure that [iMESc]{style="font-family: 'Alata', sans-serif;"} content fits nicely on the screen, we recommend a landscape minimum resolution of 1377 x 768 pixels. Get started by [Creating a Datalist](create-a-datalist) using the ![](images/create_datalist_button.png){style="border: 1px solid #05668D;" width="21" height="15"} button from the [Pre-Processing tools].
+<div>
 
-::: {style="border: 1px dashed lightgray; padding: 5px"}
+[iMESc]{style="font-family: 'Alata', sans-serif;"} is presented through **a** **dashboard** **layout**, with the main page split into three parts: **(1) Pre-processing tools** on the top-left containing widgets for Datalist options and pre-processing data; **(2) sidebar** on the left containing menu buttons; and the **(3) main panel** for analytical tasks. When selecting menu button, the user will be taken to a sunscreen (module). Each module has a header containing interaction widgets and multiple tab panels supporting their of functionalities. To ensure that [iMESc]{style="font-family: 'Alata', sans-serif;"} content fits nicely on the screen, we recommend a landscape minimum resolution of 1377 x 768 pixels.
+
 ![](images/layout.png)
-:::
-:::
 
 ------------------------------------------------------------------------
 
-# Pre-processing Tools
+</div>
+:::
+
+::: boxtext
+# Datalist
+
+::: {style="padding: 20px"}
+[iMESc]{style="font-family: 'Alata', sans-serif;"} implements its analytic tasks on **Datalists**, which is composed of two mandatory attributes, and three optional attributes for spatializing the results:
+
+**Required:**
+
+-   **Numeric-Attribute:** the numeric variables. This is the attribute under which most analysis will be done.
+
+-   **Factor-Attribute:** the categorical variables. iMESc uses it mainly for labeling, grouping and viewing the results.
+
+**Optional:**
+
+-   **Coords-Attribute:** the coordinates.
+
+-   **Base-Shape:** the shape to be used to clip interpolated surfaces (e. g., an oceanic basin shape
+
+-   **Layer-Shape:** the shape to be used to be used as an additional layer (e.g., a continent shape).
+
+All analyses available at iMESc will require a Datalist created by the user, either [uploaded](#upload) or [using example Data](#use-example-data). Get started by [Creating a Datalist](#pre-processing-tools) using the ![](images/create_datalist_button.png){style="border: 1px solid #05668D;" width="21" height="15"} button from the [Pre-Processing tools](#pre-processing-tools).
+:::
+:::
+
+# Pre-processing Tools {#pre-processing-tools}
 
 ![](images/preprocessing_tools.png)
 
-::: boxtext
 ## ![](images/create_datalist_button.png){style="border: 1px solid #05668D;" width="44" height="31"} Create a Datalist {#create-a-datalist}
 
+This button shows up a modal dialog for the creation of a Datalist. All analytical tasks in iMESc will require a Datalist created by the user, either uploaded or using example data.
+
+### Upload {#upload}
+
+::: col-sm-12
+::: col-sm-12
+-   **Name the Datalist:** Text widget for naming the Datalist.
+:::
+
+::: col-sm-6
+-   **Numeric-Attribute:** file widget for uploading a csv file containing **numeric** variables. This file is *required* and must include observations in rows, and variables in columns. The first row must contain the variable headings, and the first column the observation labels. Columns containing characters are automatically transferred to the Factor-Attribute.
+:::
+
+::: col-sm-6
+![](gif/Create%20a%20Datalist0.gif)
+:::
+:::
+
+::: col-sm-12
+::: col-sm-12
+-   **Factor-Attribute**: file widget for uploading a csv file. This file must include observations in rows, and categorical variables in columns. The first row must contain the variable headings, and the first column the observation labels. Although the Factor-Attribute is mandatory in the Datalists, uploading this file is optional. However, its use is highly recommended. Throughout the application, users can use this attribute to label, group and visualize results according to the levels of a pre-selected factor. If no file is uploaded, the Factor-Attribute will only consist of the IDs (labels) from the Numeric-Attribute. This attribute can later be replaced by a new one (widget 'Replace Factor-Attribute' in button).
+:::
+
+::: col-sm-12
+-   **Coords-Attribute**: file widget for uploading a csv file. This file is optional for creating a Datalist, but required for generating maps. The first column must contain the observation labels; the second the Longitude values and the third the Latitude values. The first columns must contain the coordinate headings.
+:::
+
+::: col-sm-12
+-   **Base-Shape**: file widget for uploading a single R file containing the shape to be used to clip interpolated surfaces when generating maps (e. g., an oceanic basin shape). This optional file can later be created using the SHP toolbox available from button, which allow the user convert shapefiles (.shp, .shx and .dbf files) into a single R file.
+:::
+
+::: col-sm-12
+-   **Layer-Shape:** file widget for uploading a single R file containing the shape to be used to be used as an additional layer (e.g., a continent shape) when generating maps. This optional file can later be created using the SHP toolbox available from button, which allow the user convert shapefiles (.shp, .shx and .dbf files) into a single R file.
+:::
+:::
+
+#### **Best practices when uploading the CSV file:**
+
+::: col-sm-12
+1.  Prepare your data: Use the first row as column headers, the first column as observation labels.
+
+2.  **Each label should be unique**, so remove duplicated names. Check also for empty cells in this column.
+
+3.  **Column names must be unique**. Duplicated names are not allowed.
+
+4.  Avoid names with blank spaces.
+
+5.  Avoid names with special symbols.
+
+6.  Avoid beginning variable names with a number.
+
+7.  R is case sensitive. This means that Name is different from Name or NAME.
+
+8.  Avoid blank rows in your data.
+
+9.  Replace missing values by NA (for not available).
+:::
+
+### Use example Data {#use-example-data}
+
 ::: {style="padding-left: 20px"}
-::: boxtext
-[iMESc]{style="font-family: 'Alata', sans-serif;"} implements its analytic tasks on **Datalists**. A Datalist is composed by two mandatory spreadsheets, called **Numeric-Attribute** and **Factor-Attribute**. All analyses available at [iMESc]{style="font-family: 'Alata', sans-serif;"} will require a Datalist created by the user, either uploaded or using example data.
-:::
+This opion allows the user to insert the example data available in iMESc. When [creating a Datalist](#create-a-datalist), choose "use example data" from the radio-button and proceed with Datalist insertion. This single action inserts two Datalists from Araçá Bay (southeastern coast of Brazil):
 
-::: {style="display: flex;"}
-<div>
-
-::: {style="padding: 20px; min-width: 200px;"}
--   **Numeric Attribute**: creation of a Datalist requires at least one csv file to be uploaded as Numeric-Attribute, where rows are the observations, columns are the variables [*The first column must contain the observation labels.*]{style="color: SeaGreen"}Columns containing characters are automatically transferred to the Factor-Attribute.
--   **Factor-Attribute** is also a csv file, and must contain the factors for your data, which will be used for labeling, grouping and viewing the results. It can contain as many factors as you want. If no file for the Factor-Attribute is uploaded, the Factor-Attribute will only consist of the IDs from the Numeric-Attribute.
-:::
-
-</div>
-
-<div>
-
-::: {style="max-width: 400px; min-width:450px; border: 1px solid gray"}
-![](images/create_datalist.png)
-:::
-
-</div>
-:::
-
-::: {style="margin-top: 15px"}
-The Datalist may also include 3 additional files for spatializing the results: **Coords-Attribute**, **Base-Shape-Attribute** and **Layer-Shape-Attribute**. The first one is mandatory for generating maps: a csv file containing the IDs, Longitude and Latitude of the observations.
-
-The Base-Shape-Attribute and Layer-Shape-Attribute are optional. Each is composed by a single *R* file containing the shape to be used to clip interpolated surfaces (e. g., an oceanic basin shape) and the shape to be used to be used as an additional layer (e.g., a continent shape), respectively. These files can be created later using the **SHP toolbox** available from ![](images/cog_button.png){width="30" height="20"} button, which allow the user convert shapefiles (.shp, .shx and .dbf files) into a single *R* file.
-:::
-:::
-:::
-
-------------------------------------------------------------------------
-
-::: boxtext
-## Use example Data
-
-::: {style="padding-left: 20px"}
-This option allows the user to insert the example data available in iMESc. When [creating a Datalist](#create-a-datalist), choose "use example data" from the radio-button and proceed with Datalist insertion. This single action inserts two Datalists from Araçá Bay (southeastern coast of Brazil):
-
-1.  envi_araca: 141 samples with 9 environmental variables
+::: col-sm-12
+::: col-sm-6
+1.  envi_araca: 141 samples with 9 environmental variables;
 
 2.  nema_araca: 194 free-living marine nematode species (southeastern coast of Brazil).
 
 Both Datalists carry Coords-Attribute, Base-Shape and Layer Shape.
+:::
+
+![](gif/Create%20a%20Datalist.gif){.col-sm-6}
 :::
 :::
 
@@ -143,27 +188,15 @@ Both Datalists carry Coords-Attribute, Base-Shape and Layer Shape.
 ::: boxtext
 ## ![](images/cog_button.png){style="border: 1px solid #05668D;" width="44" height="31"} Options
 
-::: {style="padding-left: 20px"}
-::: {style="display: flex;"}
-<div>
-
-::: {style="margin-top: 25px"}
-::: {style="margin-top: 25px"}
-This drop-down menu offers to the user a range of tools for editing Datalists. Among them, we highlight the **Exchange Factor/Variables** function for converting/transferring Factors to Numeric (binary or ordinal) and vice-verse.\
+::: {style="display: flex; padding-left: 20px"}
+::: {style="width: 70%"}
+This drop-down button offers to the user a range of tools for editing Datalists. Among them, we highlight the **Exchange Factor/Variables** function for converting/transferring Factors to Numeric (binary or ordinal) and vice-verse.\
 \
-The **SHP toolbox** for creating [Base-Shapes](#Shape), [Layer-Shapes](#Shape) and [Extra-Shape](#Shape)[s](#Extra-Shape) is also an useful tool from the ![](images/cog_button.png){width="30" height="20"} button.
-:::
-:::
-
-</div>
-
-<div>
-
-::: {style="width: 220px; border: 1px solid gray; text-align: center; padding-top: 10px"}
-![](images/cog.png){width="144"}
+We also highlight the **SHP toolbox** for creating [Base-Shapes](#Shape), [Layer-Shapes](#Shape) and [Extra-Shape](#Shape)[s](#Extra-Shape) is also an useful tool from the ![](images/cog_button.png){width="30" height="20"} button.
 :::
 
-</div>
+::: {style="width: 30%"}
+![](gif/cogs.gif)
 :::
 :::
 :::
@@ -173,18 +206,27 @@ The **SHP toolbox** for creating [Base-Shapes](#Shape), [Layer-Shapes](#Shape) a
 ::: boxtext
 ## ![](images/picker.png){width="182"} ![](images/undo.png){width="31"} ![](images/save.png){width="31"}
 
-::: {style="padding-left: 20px"}
-This group of buttons appears when using the functionalities provided by ![](images/filter_obs.png){width="29"}![](images/filter_vars.png){width="29"}![](images/transfs.png){width="29"}![](images/imput.png){width="29"}![](images/split.png){width="29"}![](images/agg.png){width="29"}. Changes applied to the target Datalist (selected from the Datalist-picker), can be previewed in the [Track changes] drop-down panel. If any changes are made, the ![](images/save.png){width="15"} button will flash blue, indicating that it is necessary to save the changes. The ![](images/undo.png){width="15"} button undoes all changes made.
+::: {.col-sm-12 style="padding-left: 20px"}
+
+::: col-sm-6
+This group of buttons appears when using the functionalities provided by ![](images/filter_obs.png){width="29"}![](images/filter_vars.png){width="29"}![](images/transfs.png){width="29"}![](images/imput.png){width="29"}![](images/split.png){width="29"}![](images/agg.png){width="29"}. If any changes are made, the ![](images/save.png){width="15"} button will flash blue, indicating that it is necessary to save the changes. The ![](images/undo.png){width="15"} button undoes all changes made.
+:::
+
+![](gif/save_changes.gif){.col-sm-6}
 :::
 :::
 
 ------------------------------------------------------------------------
 
-## Track changes {.boxtext}
+::: boxtext
+## Track changes
 
-::: {style="padding-left: 20px"}
+<div>
+
 This group of panels shows up when using the functionalities provided by ![](images/filter_obs.png){width="29"}![](images/filter_vars.png){width="29"}![](images/transfs.png){width="29"}![](images/imput.png){width="29"}![](images/split.png){width="29"}![](images/agg.png){width="29"}. The user can track changes in real-time via summary panels and histograms. We highlight the *Missing values* panel for checking the number of missing values per variable.
 
+::: {style="display: flex"}
+::: {style="width: 50%"}
 -   **Changes**: displays current and previous changes (see existing)
 
 -   **Summary**: displays the number of missing values, rows and columns; and minimum, average, median, and maximum values.
@@ -198,20 +240,37 @@ This group of panels shows up when using the functionalities provided by ![](ima
 -   **Missing values**: number of missing values per variable.
 :::
 
+::: {style="width: 50%"}
+![](images/track_changes.png)
+:::
+:::
+
+</div>
+:::
+
 ------------------------------------------------------------------------
 
 ::: boxtext
 ## ![](images/filter_obs.png){style="border: 1px solid #05668D;" width="44"} Filter observations
 
-::: {style="padding: 20px"}
--   **Na.omit**: Remove all observations that contain any empty cases (NAs)
+::: {style="padding-left: 20px; display: flex"}
 
--   **Match with**: Restrict current Datalist to observations (IDs) from another Datalist
+::: {style="width: 70%"}
+-   **Na.omit**: Check-box widget to remove all observations that contain any empty cases (NAs)
+
+-   **Match with**: If checked, constrains the target Datalist to observations (IDs) from another Datalist.
 
 -   **Filter by Factors:** Link to display a Filter Tree structure based on the levels of the Factor-Attribute. Click in the nodes to expand and select the factor levels. Only available for factors with less than 100 levels.
 
--   **Individual selection** Link to select observations using Datalist IDs.
+-   **Individual selection:** Link to select observations using Datalist IDs.
 :::
+
+::: {style="width: 30%; padding: 10px"}
+![](images/filter_observations.png)
+:::
+:::
+
+![](gif/Filter%20by%20factors.gif)
 :::
 
 ------------------------------------------------------------------------
@@ -219,7 +278,8 @@ This group of panels shows up when using the functionalities provided by ![](ima
 ::: boxtext
 ## ![](images/filter_vars.png){style="border: 1px solid #05668D;" width="44"} Filter variables
 
-::: {style="padding-left:20px"}
+::: {style="padding-left:20px; display: flex"}
+::: {style="width: 70%"}
 -   **Value based removal**
 
     -   **Abund\<:** Remove variables with an value less than x-percent of the total;
@@ -230,6 +290,11 @@ This group of panels shows up when using the functionalities provided by ![](ima
 
 -   **Individual Selection:** Link to select variables using columns names.
 :::
+
+::: {style="width: 30%"}
+![](images/filter_variables.png)
+:::
+:::
 :::
 
 ------------------------------------------------------------------------
@@ -237,7 +302,8 @@ This group of panels shows up when using the functionalities provided by ![](ima
 ::: boxtext
 ## ![](images/transfs.png){style="border: 1px solid #05668D;" width="44"} Transformations
 
-::: {style="padding-left: 20px"}
+::: {style="padding-left: 20px; display: flex"}
+::: {style="width: 70%"}
 ### Transformation
 
 ::: {style="padding-left: 20px"}
@@ -290,6 +356,11 @@ This group of panels shows up when using the functionalities provided by ![](ima
     Generates one randomly rarefied community given sample size. If the sample size is equal to or larger than the observed number of individuals, the non-rarefied community will be returned
     :::
 :::
+
+::: {style="width: 30%"}
+![](images/pre_3.png)
+:::
+:::
 :::
 
 ------------------------------------------------------------------------
@@ -297,7 +368,26 @@ This group of panels shows up when using the functionalities provided by ![](ima
 ::: boxtext
 ## ![](images/imput.png){style="border: 1px solid #05668D;" width="44"} Data imputation
 
-::: {style="padding-left: 20px"}
+::: {style="padding-left: 20px; display: flex"}
+::: {style="width: 70%"}
+Methods for completing the missing values with values estimated from the observed data. This tool is only available for Datalists that contain missing data either in the Numeric-Attribute or in the Factor-Attribute. To impute missing values:
+
+1.  Choose the Target-Attribute;
+
+2.  Pick a Method (described below);
+
+3.  Click in the flash blue ![](images/imput.png){style="border: 1px solid #05668D;" width="22"} button. The "Save Changes" module will automatically pop-up
+
+4.  Save the Datalist with imputed values as a new Datalist or replace an existing one.
+:::
+
+::: {style="width: 30%"}
+![](images/pre_4.png)
+:::
+:::
+
+**Methods:**
+
 -   **Median/mode:** Numeric-Attribute columns are imputed with the median; Factor-Attribute columns are imputed with the mode
 
 -   **Knn**: k-nearest neighbor imputation is only available for the Numeric-Attribute. It is carried out by finding the k closest samples (Euclidian distance) in the dataset. This method automatically center and scale your data.
@@ -308,17 +398,27 @@ This group of panels shows up when using the functionalities provided by ![](ima
 :::
 
 ------------------------------------------------------------------------
-:::
 
 ::: boxtext
-## ![](images/split.png){style="border: 1px solid #05668D;" width="44"} Data split
+## ![](images/split.png){style="border: 1px solid #05668D;" width="44"} Data partition
 
-::: {style="padding: 20px"}
+::: {style="padding: 20px; display: flex"}
+
+::: {style="width: 70%"}
 Add partition as a factor in the Factor-Attribute. For the supervised ML methods, you can choose this partition to constrain training and testing data.
 
 -   **Random Sampling:** simple random sampling is used
 
 -   **Balanced Sampling:** The random sampling is done within the levels of a choosen factor in an attempt to balance the class distributions within the splits.
+:::
+
+::: {style="width:50%"}
+![](gif/Data-partition.gif)
+:::
+:::
+
+::: boxtext
+In the context of Machine Learning, the split of the modelling dataset into training and testing samples is probably one of the most common pre-processing steps that is needed to undertake. The creation of different samples for training and testing helps the model evaluation.
 :::
 :::
 
@@ -327,8 +427,14 @@ Add partition as a factor in the Factor-Attribute. For the supervised ML methods
 ::: boxtext
 ## ![](images/agg.png){style="border: 1px solid #05668D;" width="44"} Aggregate
 
-::: {style="padding-left: 20px"}
+::: {style="padding-left: 20px; display: flex"}
+::: {style="width: 70%"}
 The process involves two stages. First, collate individual cases of the Numeric-Attribute together with a grouping variable (unselected factors). Second, perform which calculation you want on each group of cases (selected factors). Available methods includes *Mean*, *Sum*, *Median*, *Var* (variance), *SD* (standard deviation), *Min*, *Max.*
+:::
+
+::: {style="width: 30%"}
+![](images/pre_6.png)
+:::
 :::
 :::
 
@@ -337,7 +443,15 @@ The process involves two stages. First, collate individual cases of the Numeric-
 ::: boxtext
 ## ![](images/palette.png){style="border: 1px solid #05668D;" width="44"} Create Palette
 
+::: {style="padding-left: 20px; display: flex"}
+::: {style="width: 70%"}
 Create customized palettes to be used along the graphical outputs.
+:::
+
+::: {style="width: 30%"}
+![](images/pre_7.png)
+:::
+:::
 :::
 
 ------------------------------------------------------------------------
@@ -345,10 +459,16 @@ Create customized palettes to be used along the graphical outputs.
 ::: boxtext
 ## ![](images/savepoint.png){style="border: 1px solid #05668D;" width="44"} Savepoint
 
-::: {style="padding-left: 20px"}
+::: {style="padding-left: 20px; display: flex"}
+::: {style="width: 70%"}
 -   **Create**: create a savepoint, a single R object to be downloaded and that can be reloaded later to restore analysis output.
 
 -   **Restore** : Upload a savepoint (.rds file) to restore the dashboard.
+:::
+
+::: {style="width: 30%"}
+![](images/pre_8.png)
+:::
 :::
 :::
 
@@ -470,6 +590,8 @@ This functionality implements the [segRDA](https://besjournals.onlinelibrary.wil
 
 ::: boxtext
 ## ![](images/side3_map.png){width="54"} Spatial Tools
+
+The spatial tools is composed of a header with the input variable and a sidebar
 
 ::: {style="padding-left: 20px"}
 Header:![](images/map_header.png)

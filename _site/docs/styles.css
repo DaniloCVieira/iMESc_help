@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700&display=swap');
+ /*------------- Whole Document---------------- */
+
+body{
+  font-size:16px;
+}
+
+
+/* links */
+a {
+  color: #5ebccf;
+}
+
+a:hover {
+ color: #50a0b0; /* darker color when hovering */
+}
+
+/*----------------ADDING WHITE SPACE-------------*/
+#toc-title{
+
+}
+
+#__reactivedoc__ > div {
+  padding: 0px;
+  padding-left: 20px;
+  margin: 0px;
+  margin-top: 50px;
+}
+
+body > div.container-fluid.main-container > div > div.toc-content.col-xs-12.col-sm-8.col-md-9 {
+
+  padding-top:80px;
+}
+
+
+.header-section-number::after {
+  content: ".";
+}
+
+.section h1{
+  font-size: 30px;
+  font-weight: bold;
+  color: #05668D;
+}
+.icomenu:before{
+  width: 40px;
+}
+
+#plus{
+  verify_fa = FALSE,class="fas fa-plus",name=NULL
+}
+
+
+.create_datalist {
+  background-color: transparent;
+color: #05668D;
+ border-radius: 0px 0px 0px 0px;
+ padding:0px;
+  text-align: center;
+  margin: 0px;
+         }
+#section-create-a-datalist > h3 > span
+
+
+.setup div:after{
+  content: ' ';
+  background: url(logo.png);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  margin-right: 5px;
+  text-align: center;
+    margin-left: 50px;
+}
+.main-container{
+
+      magin-right: -200px;
+   padding-right: -200px;
+}
+
+body > div.container-fluid.main-container{
+  padding: 0px;
+  margin: 0px;
+  padding-left: 10px;
+
+
+
+}
+
+
+.title{
+  display: none;
+}
+#TOC {
+  width: 380px;
+    margin: 0px;
+    padding: 0px;
+  padding-top: 130px;
+max-width: 450px;
+    max-height: 85%;
+
+}
+#toc-title {
+  border-radius: 6px;
+background: white;
+    position: fixed;
+    float: left;
+    text-align: center;
+  padding: 5px;
+  position: fixed;
+  font-family: 'Alata', sans-serif;
+  font-size: 50px;
+  width: 380px;
+  pading: 0px;
+  padding-bottom: 15px;
+  padding-top: 20px;
+   border: 1px solid SeaGreen;
+   max-height: 85%;
+   min-height: 1px;
+   margin-top: 25px;
+   z-index: 99
+}
+#toc-title:before {
+  content: ' ';
+  background: url(logo.png);
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+
+  text-align: center;
+
+;
+
+}
+
+#toc-title:after{
+   content: 'an Interactive Machine learning App for Environmental Sciences';
+   font-size: 15px;
+   padding: 0px;
+
+   height: 35px;
+   max-width: 380px;
+   display: block;
+   font-weight: italic;
+   text-align: center;
+}
+#toc-title:after{
+
+  text-align: center;
+    width: 380px;
+    padding-left: 40px;
+    padding-right: 40px;
+       padding-bottom: 10px;
+}
+body > div.container-fluid.main-container > div > div.toc-content.col-xs-12.col-sm-8.col-md-9{
+  padding-left: 90px;
+  magin-right: -200px;
+
+}
+body > div.container-fluid.main-container > div {
+      margin-right: -150px;
+      background: gainsboro;
+}
+body > div.container-fluid.main-container > div{
+
+}
+
+.boxtext{
+  padding-left: 20px;
+  background: white;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+
+.numbold > ol > li::marker{
+  font-weight: bold;}
+

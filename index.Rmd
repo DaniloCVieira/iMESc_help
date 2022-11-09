@@ -68,7 +68,7 @@ The app will automatically install the required packages, and may take some time
 
 <div>
 
-[iMESc]{style="font-family: 'Alata', sans-serif;"} is presented through **a** **dashboard** **layout**, with the main page split into three parts: **(1) Pre-processing tools** on the top-left containing widgets for Datalist options and pre-processing data; **(2) sidebar** on the left containing menu buttons; and the **(3) main panel** for analytical tasks. When selecting menu button, the user will be taken to a sunscreen (module). Each module has a header containing interaction widgets and multiple tab panels supporting their of functionalities. To ensure that [iMESc]{style="font-family: 'Alata', sans-serif;"} content fits nicely on the screen, we recommend a landscape minimum resolution of 1377 x 768 pixels.
+[iMESc]{style="font-family: 'Alata', sans-serif;"} is presented through **a** **dashboard** **layout**, with the main page split into three parts: **(1) Pre-processing tools** on the top-left containing widgets for Datalist options and pre-processing data; **(2) Sidebar-menu** on the left containing menu buttons; and the **(3) main panel** for analytical tasks. When selecting menu button, the user will be taken to a subscreen (module). Each module has a header containing interaction widgets and multiple tab panels supporting their of functionalities. To ensure that [iMESc]{style="font-family: 'Alata', sans-serif;"} content fits nicely on the screen, we recommend a landscape minimum resolution of 1377 x 768 pixels.
 
 ![](images/layout.png)
 
@@ -97,55 +97,38 @@ The app will automatically install the required packages, and may take some time
 
 -   **Layer-Shape:** the shape to be used to be used as an additional layer (e.g., a continent shape).
 
-All analyses available at iMESc will require a Datalist created by the user, either [uploaded](#upload) or [using example Data](#use-example-data). Get started by [Creating a Datalist](#pre-processing-tools) using the ![](images/create_datalist_button.png){style="border: 1px solid #05668D;" width="21" height="15"} button from the [Pre-Processing tools](#pre-processing-tools).
+All analyses available at iMESc will require a Datalist created by the user, either [uploaded](#upload) or [using example Data](#use-example-data). Get started by [Creating a Datalist](#create-a-datalist).
 :::
 :::
 
-# Pre-processing Tools {#pre-processing-tools}
+::: boxtext
+:::
 
-![](images/preprocessing_tools.png)
+------------------------------------------------------------------------
 
-## ![](images/create_datalist_button.png){style="border: 1px solid #05668D;" width="44" height="31"} Create a Datalist {#create-a-datalist}
+::: boxtext
+# Create a Datalist {#create-a-datalist}
 
-This button shows up a modal dialog for the creation of a Datalist. All analytical tasks in iMESc will require a Datalist created by the user, either uploaded or using example data.
+The button shows up a modal dialog for the creation of a Datalist. All analytical tasks in iMESc will require a Datalist created by the user, either uploaded or using example data.
 
-### Upload {#upload}
+## Upload {#upload}
 
-::: col-sm-12
-::: col-sm-12
 -   **Name the Datalist:** Text widget for naming the Datalist.
-:::
 
-::: col-sm-6
--   **Numeric-Attribute:** file widget for uploading a csv file containing **numeric** variables. This file is *required* and must include observations in rows, and variables in columns. The first row must contain the variable headings, and the first column the observation labels. Columns containing characters are automatically transferred to the Factor-Attribute.
-:::
+-   **Numeric-Attribute**: file widget for uploading a csv file containing numeric variables. This file is required and must include observations in rows, and variables in columns. The first row must contain the variable headings, and the first column the observation labels. Columns containing characters are automatically transferred to the Factor-Attribute.
 
-::: col-sm-6
 ![](gif/Create%20a%20Datalist0.gif)
-:::
-:::
 
-::: col-sm-12
-::: col-sm-12
--   **Factor-Attribute**: file widget for uploading a csv file. This file must include observations in rows, and categorical variables in columns. The first row must contain the variable headings, and the first column the observation labels. Although the Factor-Attribute is mandatory in the Datalists, uploading this file is optional. However, its use is highly recommended. Throughout the application, users can use this attribute to label, group and visualize results according to the levels of a pre-selected factor. If no file is uploaded, the Factor-Attribute will only consist of the IDs (labels) from the Numeric-Attribute. This attribute can later be replaced by a new one (widget 'Replace Factor-Attribute' in button).
-:::
+-   **Factor-Attribute:** file widget for uploading a csv file. This file must include observations in rows, and categorical variables in columns. The first row must contain the variable headings, and the first column the observation labels. Although the Factor-Attribute is mandatory in the Datalists, uploading this file is optional. However, its use is highly recommended. Throughout the application, users can use this attribute to label, group and visualize results according to the levels of a pre-selected factor. If no file is uploaded, the Factor-Attribute will only consist of the IDs (labels) from the Numeric-Attribute. This attribute can later be replaced by a new one (widget 'Replace Factor-Attribute' in button).
 
-::: col-sm-12
--   **Coords-Attribute**: file widget for uploading a csv file. This file is optional for creating a Datalist, but required for generating maps. The first column must contain the observation labels; the second the Longitude values and the third the Latitude values. The first columns must contain the coordinate headings.
-:::
+-   **Coords-Attribute:** file widget for uploading a csv file. This file is optional for creating a Datalist, but required for generating maps. The first column must contain the observation labels; the second the Longitude values and the third the Latitude values. The first columns must contain the coordinate headings.
 
-::: col-sm-12
--   **Base-Shape**: file widget for uploading a single R file containing the shape to be used to clip interpolated surfaces when generating maps (e. g., an oceanic basin shape). This optional file can later be created using the SHP toolbox available from button, which allow the user convert shapefiles (.shp, .shx and .dbf files) into a single R file.
-:::
+-   **Base-Shape:** file widget for uploading a single R file containing the shape to be used to clip interpolated surfaces when generating maps (e. g., an oceanic basin shape). This optional file can later be created using the SHP toolbox available from button, which allow the user convert shapefiles (.shp, .shx and .dbf files) into a single R file.
 
-::: col-sm-12
--   **Layer-Shape:** file widget for uploading a single R file containing the shape to be used to be used as an additional layer (e.g., a continent shape) when generating maps. This optional file can later be created using the SHP toolbox available from button, which allow the user convert shapefiles (.shp, .shx and .dbf files) into a single R file.
-:::
-:::
+-   **Layer-Shape: f**ile widget for uploading a single R file containing the shape to be used to be used as an additional layer (e.g., a continent shape) when generating maps. This optional file can later be created using the SHP toolbox available from button, which allow the user convert shapefiles (.shp, .shx and .dbf files) into a single R file.
 
-#### **Best practices when uploading the CSV file:**
+## Best practices when uploading the CSV file
 
-::: col-sm-12
 1.  Prepare your data: Use the first row as column headers, the first column as observation labels.
 
 2.  **Each label should be unique**, so remove duplicated names. Check also for empty cells in this column.
@@ -163,99 +146,110 @@ This button shows up a modal dialog for the creation of a Datalist. All analytic
 8.  Avoid blank rows in your data.
 
 9.  Replace missing values by NA (for not available).
-:::
 
-### Use example Data {#use-example-data}
+## Use example data {#use-example-data}
 
-::: {style="padding-left: 20px"}
-This opion allows the user to insert the example data available in iMESc. When [creating a Datalist](#create-a-datalist), choose "use example data" from the radio-button and proceed with Datalist insertion. This single action inserts two Datalists from Araçá Bay (southeastern coast of Brazil):
+This opion allows the user to insert the example data available in iMESc. When creating a Datalist, choose "use example data" from the radio-button and proceed with Datalist insertion. This single action inserts two Datalists from Araçá Bay (southeastern coast of Brazil):
 
-::: col-sm-12
-::: col-sm-6
-1.  envi_araca: 141 samples with 9 environmental variables;
+-   envi_araca: 141 samples with 9 environmental variables;
 
-2.  nema_araca: 194 free-living marine nematode species (southeastern coast of Brazil).
+-   nema_araca: 194 free-living marine nematode species (southeastern coast of Brazil).
 
 Both Datalists carry Coords-Attribute, Base-Shape and Layer Shape.
 :::
 
-![](gif/Create%20a%20Datalist.gif){.col-sm-6}
-:::
-:::
-
 ------------------------------------------------------------------------
 
 ::: boxtext
-## ![](images/cog_button.png){style="border: 1px solid #05668D;" width="44" height="31"} Options
+# Workflow basics
 
-::: {style="display: flex; padding-left: 20px"}
-::: {style="width: 70%"}
-This drop-down button offers to the user a range of tools for editing Datalists. Among them, we highlight the **Exchange Factor/Variables** function for converting/transferring Factors to Numeric (binary or ordinal) and vice-verse.\
-\
-We also highlight the **SHP toolbox** for creating [Base-Shapes](#Shape), [Layer-Shapes](#Shape) and [Extra-Shape](#Shape)[s](#Extra-Shape) is also an useful tool from the ![](images/cog_button.png){width="30" height="20"} button.
+### 1. Choose a method and prepare the Datalists accordingly
+
+-   For unsupervised methods, `X` is the Numeric Attribute.
+
+-   For classification model, `X` is the Numeric-Attribute\* and `Y` is the Factor-Attribute. `X` and `Y` can come from the same Datalist or from different Datalists.
+
+-   For regression models: `X` and `Y` are Numeric-Attribute, and therefore must be different Datalists
+
+::: {style="font-size: 13px"}
+*\*For the Naive Bayes Algorithm, Y is always the Factor-Attribute, and X can be either Factor-Attribute or Numeric-Attribute..*
 :::
 
-::: {style="width: 30%"}
-![](gif/cogs.gif)
-:::
-:::
-:::
+### 2. Pre-process
 
-------------------------------------------------------------------------
+-   Fill in missing values, if any (Data imputation tool)
 
-::: boxtext
-## ![](images/picker.png){width="182"} ![](images/undo.png){width="31"} ![](images/save.png){width="31"}
+-   For distance-based methods (e.g. PCA, SOM), it may be interesting to apply some transformation.
 
-::: {.col-sm-12 style="padding-left: 20px"}
+-   For supervised methods, create a data partition in Datalist Y. This action creates a factor in the Factor-Attribute indicating the partitioning of the data into the training set and the test set.
+
+### 3. Save changes and models
+
+::: col-sm-12
+::: col-sm-12
+Saving data changes or trained models is a recurring step throughout iMESc.
+
+After a transformation, for example, the user can save the changes as a new Datalist, or overwrite an existing one. During this process, the Factor, Coords and Shapes attributes (if any) are transferred to the new Datalist. Models saved in the Datalist (e.g. RF-Attribute) are not transferred.
+:::
 
 ::: col-sm-6
-This group of buttons appears when using the functionalities provided by ![](images/filter_obs.png){width="29"}![](images/filter_vars.png){width="29"}![](images/transfs.png){width="29"}![](images/imput.png){width="29"}![](images/split.png){width="29"}![](images/agg.png){width="29"}. If any changes are made, the ![](images/save.png){width="15"} button will flash blue, indicating that it is necessary to save the changes. The ![](images/undo.png){width="15"} button undoes all changes made.
+The trained models are saved inside the Datalist used as a predictor (X). Likewise, the user can save as a new model, or overwrite an existing one. This action creates a new attribute within the Datalist (e.g. RF-Attribute for Random Forest models). A summary table of the different models saved in a Datalist can be viewed in the Data Bank menu.
 :::
 
-![](gif/save_changes.gif){.col-sm-6}
+::: col-sm-6
+![](gif/Save_model.gif)
 :::
+:::
+
+### 4. Download a Savepoint
+
+Save all analysis results by creating a savepoint, a single R object that can be downloaded and reloaded later to restore analysis output.
+
+![](gif/savepoint.gif)
 :::
 
 ------------------------------------------------------------------------
 
+------------------------------------------------------------------------
+
+# Pre-processing Tools {#pre-processing-tools}
+
 ::: boxtext
-## Track changes
+## ![](images/cog_button.png){style="border: 1px solid #05668D;max-width: 44px; max-height: 31px" width="44" height="31"} Options
 
-<div>
-
-This group of panels shows up when using the functionalities provided by ![](images/filter_obs.png){width="29"}![](images/filter_vars.png){width="29"}![](images/transfs.png){width="29"}![](images/imput.png){width="29"}![](images/split.png){width="29"}![](images/agg.png){width="29"}. The user can track changes in real-time via summary panels and histograms. We highlight the *Missing values* panel for checking the number of missing values per variable.
+::: {style="padding-left: 20px"}
+This drop-down button offers to the user a range of tools for editing Datalists.
+:::
 
 ::: {style="display: flex"}
+-   **Rename Datalist**
+
+-   **Merge Datalist:** merge two or more Datalist by column or rows.
+
+-   **Exchange Factor/Variables**: convert/transfer Factors to Numeric (binary or ordinal) and vice-verse.
+
+-   **Edit Datalist Columns:** Edit the names of the columns (Numeric-Attribute and Factor-Attribute)
+
+-   **Edit Model names:** Edit the names of the saved models.
+
+-   **Transpose Datalist:** rotate Datalist (Numeric and Factor) from rows to columns.
+
+-   **SHP toolbox:** creates [Base-Shapes](#Shape), [Layer-Shapes](#Shape) and [Extra-Shape](#Shape)[s](#Extra-Shape).
+
 ::: {style="width: 50%"}
--   **Changes**: displays current and previous changes (see existing)
-
--   **Summary**: displays the number of missing values, rows and columns; and minimum, average, median, and maximum values.
-
--   **Data**: Histogram of all numerical values
-
--   **colSums**: Column sum histogram
-
--   **rowSums**: row sum historam
-
--   **Missing values**: number of missing values per variable.
-:::
-
-::: {style="width: 50%"}
-![](images/track_changes.png)
+![](gif/Exchange.gif)
 :::
 :::
 
-</div>
+![](gif/Create_base_shape.gif){style="max-width: 50%"}
 :::
 
 ------------------------------------------------------------------------
 
 ::: boxtext
-## ![](images/filter_obs.png){style="border: 1px solid #05668D;" width="44"} Filter observations
+## ![](images/filter_obs.png){style="max-width: 44px; max-height: 31px" width="44"} Filter observations
 
 ::: {style="padding-left: 20px; display: flex"}
-
-::: {style="width: 70%"}
 -   **Na.omit**: Check-box widget to remove all observations that contain any empty cases (NAs)
 
 -   **Match with**: If checked, constrains the target Datalist to observations (IDs) from another Datalist.
@@ -265,18 +259,13 @@ This group of panels shows up when using the functionalities provided by ![](ima
 -   **Individual selection:** Link to select observations using Datalist IDs.
 :::
 
-::: {style="width: 30%; padding: 10px"}
-![](images/filter_observations.png)
-:::
-:::
-
 ![](gif/Filter%20by%20factors.gif)
 :::
 
 ------------------------------------------------------------------------
 
 ::: boxtext
-## ![](images/filter_vars.png){style="border: 1px solid #05668D;" width="44"} Filter variables
+## ![](images/filter_vars.png){style="border: 1px solid #05668D;max-width: 44px; max-height: 31px" width="44"} Filter variables
 
 ::: {style="padding-left:20px; display: flex"}
 ::: {style="width: 70%"}
@@ -297,16 +286,20 @@ This group of panels shows up when using the functionalities provided by ![](ima
 :::
 :::
 
+::: boxtext
+:::
+
 ------------------------------------------------------------------------
 
 ::: boxtext
-## ![](images/transfs.png){style="border: 1px solid #05668D;" width="44"} Transformations
+## ![](images/transfs.png){style="border: 1px solid #05668D;max-width: 44px; max-height: 31px" width="44"} Transformations
 
-::: {style="padding-left: 20px; display: flex"}
+::: {style="padding-left:20px; display: flex"}
 ::: {style="width: 70%"}
+<div>
+
 ### Transformation
 
-::: {style="padding-left: 20px"}
 -   **None**: No Transformation
 
 -   **Log2**: logarithmic base 2 transformation as suggested by Anderson et al. (2006): log_b (x) + 1 for x \> 0, where b is the base of the logarithm. Zeros are left as zeros. Higher bases give less weight to quantities and more to presences, and logbase = Inf gives the presence/absence scaling. Please note this is not log(x+1). Anderson et al. (2006) suggested this for their (strongly) modified Gower distance, but the standardization can be used independently of distance indices.
@@ -340,21 +333,48 @@ This group of panels shows up when using the functionalities provided by ![](ima
 -   **Yeojohson**: Similar to the Box-Cox model but can accommodate predictors with zero and/or negative values
 
 -   **expoTrans**: Exponential transformation
-:::
 
-### Scale and Centering
+-   **Log10**: logarithmic base 10 transformation as suggested by Anderson et al. (2006): log_b (x) + 1 for x \> 0, where b is the base of the logarithm. Zeros are left as zeros. Higher bases give less weight to quantities and more to presences, and logbase = Inf gives the presence/absence scaling. Please note this is not log(x+1). Anderson et al. (2006) suggested this for their (strongly) modified Gower distance, but the standardization can be used independently of distance indices.
 
-::: {style="padding-left: 20px"}
--   **Scale**: If scale is TRUE then scaling is done by dividing the (centered) columns of x by their standard deviations if center is TRUE, and the root mean square otherwise. If scale is FALSE, no scaling is done.
+-   **Total**: divide by the line (observation) total
 
--   **Center**: If center is TRUE then centering is done by subtracting the column means (omitting NAs) of x from their corresponding columns, and if center is FALSE, no centering is done.
-:::
+-   **Max**: divide by column (variable) maximum
+
+-   **Frequency**: divide by column (variable) total and multiply by the number of non-zero items, so that the average of non-zero entries is one
+
+-   **Range**: standardize column (variable) values into range 0 ... 1. If all values are constant, they will be transformed to 0
+
+-   **Pa**: scale x to presence/absence scale (0/1)
+
+-   **Chi.square**: divide by row sums and square root of column sums, and adjust for square root of matrix total
+
+-   **Hellinger**: square root of method = total
+
+-   **Sqrt2**: square root
+
+-   **Sqrt4**: 4th root
+
+-   **Log2(x+1**): logarithmic base 2 transformation (x+1)
+
+-   **Log10(x+1)**: logarithmic base 10 transformation (x+1)
+
+-   **BoxCox**: Designed for non-negative responses. boxcox transforms nonnormally distributed data to a set of data that has approximately normal distribution. The Box-Cox transformation is a family of power transformations.
+
+-   **Yeojohson**: Similar to the Box-Cox model but can accommodate predictors with zero and/or negative values
+
+-   **expoTrans**: Exponential transformation
+
+### Scale and Centering {data-link="Scale and Centering"}
+
+-   **Scale**: If scale is checked then scaling is done by dividing the (centered) columns of x by their standard deviations if center is TRUE, and the root mean square otherwise.
+
+-   **Center**: If center is checked then centering is done by subtracting the column means (omitting NAs) of x from their corresponding columns.
 
 ### Random Rarefraction
 
--   ::: {style="padding-left: 20px"}
-    Generates one randomly rarefied community given sample size. If the sample size is equal to or larger than the observed number of individuals, the non-rarefied community will be returned
-    :::
+-   Generates one randomly rarefied community given sample size. If the sample size is equal to or larger than the observed number of individuals, the non-rarefied community will be returned
+
+</div>
 :::
 
 ::: {style="width: 30%"}
@@ -366,26 +386,29 @@ This group of panels shows up when using the functionalities provided by ![](ima
 ------------------------------------------------------------------------
 
 ::: boxtext
-## ![](images/imput.png){style="border: 1px solid #05668D;" width="44"} Data imputation
+## ![](images/imput.png){style="border: 1px solid #05668D;max-width: 44px; max-height: 31px" width="44"} Data imputation
 
-::: {style="padding-left: 20px; display: flex"}
-::: {style="width: 70%"}
+::: {.col-sm-12 style="padding-left: 20px"}
 Methods for completing the missing values with values estimated from the observed data. This tool is only available for Datalists that contain missing data either in the Numeric-Attribute or in the Factor-Attribute. To impute missing values:
 
+::: {style="col-sm-12"}
+::: col-sm-4
 1.  Choose the Target-Attribute;
 
 2.  Pick a Method (described below);
 
-3.  Click in the flash blue ![](images/imput.png){style="border: 1px solid #05668D;" width="22"} button. The "Save Changes" module will automatically pop-up
+3.  Click in the flash blue ![](images/imput.png){style="max-width: 22px; max-height: 16px" width="22"} button. The "Save Changes" module will automatically pop-up
 
 4.  Save the Datalist with imputed values as a new Datalist or replace an existing one.
 :::
 
-::: {style="width: 30%"}
-![](images/pre_4.png)
+::: col-sm-8
+![](gif/Data_imputation.gif)
+:::
 :::
 :::
 
+::: col-sm-12
 **Methods:**
 
 -   **Median/mode:** Numeric-Attribute columns are imputed with the median; Factor-Attribute columns are imputed with the mode
@@ -396,14 +419,14 @@ Methods for completing the missing values with values estimated from the observe
 
 -   **MedianImpute**: Only available for the Numeric-Attribute. Imputation via medians takes the median of each predictor in the training set, and uses them to fill missing values. This method is simple, fast, and accepts missing values, but treats each predictor independently, and may be inaccurate.
 :::
+:::
 
 ------------------------------------------------------------------------
 
 ::: boxtext
-## ![](images/split.png){style="border: 1px solid #05668D;" width="44"} Data partition
+## ![](images/split.png){style="border: 1px solid #05668D;max-width: 44px; max-height: 31px" width="44"} Data partition
 
 ::: {style="padding: 20px; display: flex"}
-
 ::: {style="width: 70%"}
 Add partition as a factor in the Factor-Attribute. For the supervised ML methods, you can choose this partition to constrain training and testing data.
 
@@ -425,15 +448,17 @@ In the context of Machine Learning, the split of the modelling dataset into trai
 ------------------------------------------------------------------------
 
 ::: boxtext
-## ![](images/agg.png){style="border: 1px solid #05668D;" width="44"} Aggregate
+## ![](images/agg.png){style="border: 1px solid #05668D;max-width: 44px; max-height: 31px" width="44"} Aggregate
 
 ::: {style="padding-left: 20px; display: flex"}
 ::: {style="width: 70%"}
+::: {style="padding: 20px"}
 The process involves two stages. First, collate individual cases of the Numeric-Attribute together with a grouping variable (unselected factors). Second, perform which calculation you want on each group of cases (selected factors). Available methods includes *Mean*, *Sum*, *Median*, *Var* (variance), *SD* (standard deviation), *Min*, *Max.*
 :::
+:::
 
-::: {style="width: 30%"}
-![](images/pre_6.png)
+::: {style="width: 100%"}
+![](gif/Aggregate.gif)
 :::
 :::
 :::
@@ -441,15 +466,15 @@ The process involves two stages. First, collate individual cases of the Numeric-
 ------------------------------------------------------------------------
 
 ::: boxtext
-## ![](images/palette.png){style="border: 1px solid #05668D;" width="44"} Create Palette
+## ![](images/palette.png){style="border: 1px solid #05668D;max-width: 44px; max-height: 31px" width="44"} Create Palette
 
 ::: {style="padding-left: 20px; display: flex"}
 ::: {style="width: 70%"}
 Create customized palettes to be used along the graphical outputs.
 :::
 
-::: {style="width: 30%"}
-![](images/pre_7.png)
+::: {style="width: 40%"}
+![](gif/create_palette.gif)
 :::
 :::
 :::
@@ -457,7 +482,7 @@ Create customized palettes to be used along the graphical outputs.
 ------------------------------------------------------------------------
 
 ::: boxtext
-## ![](images/savepoint.png){style="border: 1px solid #05668D;" width="44"} Savepoint
+## ![](images/savepoint.png){style="border: 1px solid #05668D;max-width: 44px; max-height: 31px" width="44"} Savepoint
 
 ::: {style="padding-left: 20px; display: flex"}
 ::: {style="width: 70%"}
@@ -472,129 +497,288 @@ Create customized palettes to be used along the graphical outputs.
 :::
 :::
 
+------------------------------------------------------------------------
+
+::: boxtext
+## Track changes
+
+<div>
+
+This group of panels shows up when using the functionalities provided by ![](images/filter_obs.png){style="max-width: 29px; max-height: 20px" width="29"}![](images/filter_vars.png){style="max-width: 29px; max-height: 20px" width="29"}![](images/transfs.png){style="max-width: 29px; max-height: 20px" width="29"}![](images/imput.png){style="max-width: 29px; max-height: 20px" width="29"}![](images/split.png){style="max-width: 29px; max-height: 20px" width="29"}![](images/agg.png){style="max-width: 29px; max-height: 20px" width="29"}. The user can track changes in real-time via summary panels and histograms. We highlight the *Missing values* panel for checking the number of missing values per variable.
+
+::: {style="display: flex"}
+::: {style="width: 50%"}
+-   **Changes**: displays current and previous changes (see existing)
+
+-   **Summary**: displays the number of missing values, rows and columns; and minimum, average, median, and maximum values.
+
+-   **Data**: Histogram of all numerical values
+
+-   **colSums**: Column sum histogram
+
+-   **rowSums**: row sum historam
+
+-   **Missing values**: number of missing values per variable.
+:::
+
+::: {style="width: 50%"}
+![](images/track_changes.png)
+:::
+:::
+
+</div>
+:::
+
 # Sidebar-menu
 
 ::: boxtext
-## ![](images/side1_databank.png){width="54"} Data Bank
+## ![](images/side1_databank.png){style="max-width: 54px; max-height: 30px" width="54"} Data Bank
 
+::: {style="display: flex"}
 ::: {style="padding-left: 20px"}
-![](images/datapicker.png){width="54"} **Datalist-Picker:** Drop-down selector of the target Datalist
+![](images/datapicker.png){style="max-width: 54px; max-height: 30px" width="54"} **Datalist-Picker:** Drop-down selector of the target Datalist
 
-![](images/a1.png){width="54"} **Numeric-Attribute:** shows the Numeric-Attribute sheet
+![](images/a1.png){style="max-width: 54px; max-height: 30px" width="54"} **Numeric-Attribute:** shows the Numeric-Attribute sheet
 
-![](images/a2.png){width="54"} **Factor-Attribute:** shows the Factor-Attribute sheet
+![](images/a2.png){style="max-width: 54px; max-height: 30px" width="54"} **Factor-Attribute:** shows the Factor-Attribute sheet
 
-![](images/a3.png){width="54"} **Coords-Attribute:** shows the Coords-Attribute sheet
+![](images/a3.png){style="max-width: 54px; max-height: 30px" width="54"} **Coords-Attribute:** shows the Coords-Attribute sheet
 
-![](images/a4.png){width="54"} [**Shapes**]{#Shape}**:**
+![](images/a4.png){style="max-width: 54px; max-height: 30px" width="54"} [**Shapes**]{#Shape}**:**
 
 -   [*Base-Shape:*]{#Base-Shape} the shape to be used to clip interpolated surfaces (e. g., an oceanic basin shape) ;
 
 -   [*Layer-Shape:*]{#Layer-Shape}the shape to be used to be used as an additional layer (e.g., a continent shape);
 
 -   [*Extra-Shapes:*]{#Extra-Shape}Any additional shapes to be included in the Datalist (e.g. bathymetry lines).
-
-![](images/a5.png){width="54"} **SOM-Attribute:** displays the summary of SOM models ([unsupervised](#self-organizing-maps) and [supervised](#self-organizing-maps-1)) (if saved in the target Datalist).
-
-![](images/a6.png){width="54"} **NB-Attribute:** displays the summary of [NB models](#naive-bayes)
-
-![](images/a7.png){width="54"} **KNN-Attribute:** displays the summary of [KNN models](#k-nearest-neighbor)
-
-![](images/a8.png){width="54"} **SVM-Attribute:** displays the summary of [SVM models](#support-machine-vector)
-
-![](images/a9.png){width="54"} **RF-Attribute:** displays the summary of [RF models](#random-forest)
-
-![](images/a10.png){width="54"} **SGBOOST -Attribute:** displays the summary of [SGBOOST models](#stochastic-gradient-boosting)
-:::
 :::
 
-::: boxtext
-## ![](images/side2_desc.png){width="54"} Descriptive tools
+::: {style="max-width: 50%"}
+![](gif/Data_bank.gif)
+:::
+:::
 
 ::: {style="padding-left: 20px"}
-::: {style="padding-left: 20px"}
-![](images/datapicker.png){width="54"} **Datalist-Picker:** Drop-down menu to select the target Datalist
+![](images/a5.png){style="max-width: 54px; max-height: 30px" width="54"} **SOM-Attribute:** displays the summary of SOM models ([unsupervised](#self-organizing-maps) and [supervised](#self-organizing-maps-1)) (if saved in the target Datalist).
+
+![](images/a6.png){style="max-width: 54px; max-height: 30px" width="54"} **NB-Attribute:** displays the summary of [NB models](#naive-bayes)
+
+![](images/a7.png){style="max-width: 54px; max-height: 30px" width="54"} **KNN-Attribute:** displays the summary of [KNN models](#k-nearest-neighbor)
+
+![](images/a8.png){style="max-width: 54px; max-height: 30px" width="54"} **SVM-Attribute:** displays the summary of [SVM models](#support-machine-vector)
+
+![](images/a9.png){style="max-width: 54px; max-height: 30px" width="54"} **RF-Attribute:** displays the summary of [RF models](#random-forest)
+
+![](images/a10.png){style="max-width: 54px; max-height: 30px" width="54"} **SGBOOST -Attribute:** displays the summary of [SGBOOST models](#stochastic-gradient-boosting)
 :::
+:::
+
+## ![](images/side2_desc.png){style="max-width: 54px; max-height: 30px" width="54"} Descriptive tools
 
 ### Summary
 
-::: {style="padding-left: 20px"}
--   **Data:** shows number of rows, columns and missing values of the Numeric-Attribute;
+::: {style="display: flex"}
+::: {style="max-width: 30%"}
+Data: shows number of rows, columns and missing values of the Numeric-Attribute;
 
--   **Variable**: shows summary and a histogram for each variable in the Numeric-Attribute;
+Variable: shows summary and a histogram for each variable in the Numeric-Attribute;
 
--   **Factors**: shows a summary of the Factor-Attribute and box-plot with the count of the Factors levels;
+Factors: shows a summary of the Factor-Attribute and box-plot with the count of the Factors levels;
 
--   **Datalist**:: shows the Datalist structure.
+Datalist:: shows the Datalist structure.
 :::
 
-### Ridges:
+<div>
 
-::: {style="padding-left: 20px"}
+![](gif/Summaries.gif){style="padding: 20px"}
+
+</div>
+:::
+
+### Ridges
+
+::: {style="display: flex"}
+::: {style="max-width: 30%"}
 -   Ridge plots are partially overlapping line plots that create the impression of a mountain range. They can be quite useful for visualizing changes in distributions over time or space. This function uses the [geom_ridgeline](https://rdrr.io/cran/ggridges/man/geom_ridgeline.html) function from the [ggridges](https://rdrr.io/cran/ggridges/) package.
+:::
+
+<div>
+
+![](gif/Ridges.gif){style="padding: 20px"}
+
+</div>
 :::
 
 ### Scatter
 
-::: {style="padding-left: 20px"}
+::: {style="display: flex"}
+::: {style="max-width: 30%"}
 -   A graph in which the values of two variables are plotted along two axes, the pattern of the resulting points revealing any correlation present.;
+:::
+
+<div>
+
+![](gif/Scatter.gif){style="padding: 20px"}
+
+</div>
 :::
 
 ### Histogram
 
-::: {style="padding-left: 20px"}
 -   Numeric-Attribute column sum histogram
-:::
 
-### Boxplot:
+### Boxplot
 
-::: {style="padding-left: 20px"}
+::: {style="display: flex"}
+::: {style="min-width: 30%"}
 -   Boxplot with numerous graphical options
 :::
 
+<div>
+
+![](gif/Boxplot.gif){style="padding: 20px"}
+
+</div>
+:::
+
+### Histogram
+
+-   Numeric-Attribute column sum histogram
+
 ### MDS
 
-::: {style="padding-left: 20px"}
+::: {style="display: flex"}
+::: {style="max-width: 30%"}
 -   Nonmetric Multidimensional Scaling. This functionality uses the [metaMDS](https://rdrr.io/rforge/vegan/man/metaMDS.html) function from [vegan](https://rdrr.io/rforge/vegan/) package. It uses default arguments, with user option to choose the distance metric (Bray-Curtis, Euclidean and Jacquard). The user can interact with several graphical options, including coloring observations by a factor from the associated Factor-Attribute.
+:::
+
+<div>
+
+![](gif/mds.gif){style="padding: 20px"}
+
+</div>
 :::
 
 ### PCA
 
-::: {style="padding-left: 20px"}
--   Principal Component Analysis. This functionality uses the [prcomp](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/prcomp) function from R base. We recommend scaling the data before the PCA analysis ([Scale and Centering]). The user can interact with several graphical options, including coloring observations by a factor from the associated Factor-Attribute.
+::: {style="display: flex"}
+::: {style="max-width: 30%"}
+-   Principal Component Analysis. This functionality uses the [prcomp](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/prcomp) function from R base. We recommend scaling the data before the PCA analysis ([S]). The user can interact with several graphical options, including coloring observations by a factor from the associated Factor-Attribute.
+:::
+
+<div>
+
+![](gif/PCA.gif){style="padding: 20px"}
+
+</div>
 :::
 
 ### RDA
 
--   ::: {style="padding-left: 20px"}
-    Redundancy Analysis. This functionality uses the [rda](https://www.rdocumentation.org/packages/vegan/versions/2.4-2/topics/cca) function from from [vegan](https://rdrr.io/rforge/vegan/) package. It requires at least two Datalist for building a Y\~X model. The results are presented in two panels:
+::: {style="display: flex"}
+::: {style="max-width: 30%"}
+Redundancy Analysis. This functionality uses the [rda](https://www.rdocumentation.org/packages/vegan/versions/2.4-2/topics/cca) function from from [vegan](https://rdrr.io/rforge/vegan/) package. It requires at least two Datalist for building a Y\~X model. The results are presented in two panels:
 
-    -   Plot with with several graphical options, such as coloring observations by a factor from the associated Factor-Attribute.
+-   Plot with with several graphical options, such as coloring observations by a factor from the associated Factor-Attribute.
 
-    -   Summary: results of the rda model- importance (constrained and unconstrained), variable and observation scores, linear constrains and biplot.
-    :::
+-   Summary: results of the rda model- importance (constrained and unconstrained), variable and observation scores, linear constrains and biplot.
+:::
+
+<div>
+
+![](gif/RDA.gif){style="padding: 20px"}
+
+</div>
+:::
 
 ### segRDA
 
-::: {style="padding-left: 20px"}
+::: {style="display: flex"}
+::: {style="max-width: 30%"}
 This functionality implements the [segRDA](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210x.13300) workflow for modelling non-continuous linear responses of ecological data. The routine consists of three panels:
 
 -   SMW - Split Moving Windows along ordered data
 
 -   DP: dissimilarity profile of the SMW results for identifying breakpoints
 
--   pwRDA: performs a piece-wise redundancy analysis using specified breakpoints. The results are presented in the same way as in the [RDA] panel.
-:::
-:::
+-   pwRDA: performs a piece-wise redundancy analysis using specified breakpoints. The results are presented in the same way as in the [R] panel.
 :::
 
-::: boxtext
-## ![](images/side3_map.png){width="54"} Spatial Tools
+<div>
 
-The spatial tools is composed of a header with the input variable and a sidebar
+![](gif/segRDA.gif){style="padding: 20px"}
+
+</div>
+:::
+
+## ![](images/side3_map.png){style="max-width: 54px; max-height: 30px" width="54"} Spatial Tools
+
+under construction............
 
 ::: {style="padding-left: 20px"}
-Header:![](images/map_header.png)
+This module is intended for spatialization and therefore requires the Coors-Attributes attached to the chosen Datalist.
+
+After choosing a Datalist, choose the Attribute (Numeric or Variable) and then the variable/factor. Optionally, filters can be applied to plot observations corresponding to a chosen factor level.
+
+Map options include discretization (2D, 3D, 4D), interpolation (2D, Surface and Stack), and rasterization(2D, Surface and Stack).
+
+### Discrete
+
+-   Data palette: the observation colors;
+
+-   Size: the symbol size;
+
+    -   when target is Numeric
+
+    ```{=html}
+    <!-- -->
+    ```
+        -   Min: minimum size when scaling the target variable
+
+        -   Max: maximum size when scaling the target variable
+
+-   Scale (when target is Numeric)
+
+    -   Size: if checked, the smallest value in the variable is mapped to a size of 'Min' and the largest is mapped to a size of 'Max'. If not, no scaling is applied
+
+    -   Color: if checked, the smallest and highest value in the variable is colored according to the chosen palette.
+
+-   Color by
+
+    -   Factor
+
+-   Coords
+
+    -   Color
+
+    -   Size
+
+-   Labels
+
+    -   Factor
+
+    -   Color
+
+    -   Size
+
+-   Base Shape
+
+    -   Color
+
+    -   Transp
+
+    -   Border color
+
+-   Layer Shape
+
+    -   Color
+
+    -   Transp
+
+    -   Border color
+
+::: {style="padding-left: 20px"}
+Header:![](images/map_header.png){style="max- max-"}
 
 -   **Y Datalist**: drop-down selector of the target Datalist
 
@@ -633,7 +817,9 @@ Stacked 3d
 :::
 
 ::: boxtext
-## ![](images/side4_bio.png){width="54"} Biodiversity Tools
+## ![](images/side4_bio.png){style="max-width: 54px; max-height: 30px" width="54"} Biodiversity Tools
+
+under construction............
 
 ::: {style="padding-left: 20px"}
 Diversity Indexes
@@ -643,37 +829,59 @@ Niche
 :::
 
 ::: boxtext
-## ![](images/side5_unsup.png){width="54"} Unsupervised Algorithms
+## ![](images/side5_unsup.png){style="max-width: 54px; max-height: 30px" width="54"} Unsupervised Algorithms
+
+under construction............
 
 ::: {style="padding-left: 20px"}
-## ![](images/side6_som.png){width="54"} Self-Organizing maps {#self-organizing-maps}
+## ![](images/side6_som.png){style="max-width: 54px; max-height: 30px" width="54"} Self-Organizing maps {#self-organizing-maps}
 
-## ![](images/side7_hc.png){width="54"} Hierarchical clustering
+under construction............
 
-## ![](images/side8_kmeans.png){width="54"} K-means
+## ![](images/side7_hc.png){style="max-width: 54px; max-height: 30px" width="54"} Hierarchical clustering
+
+under construction............
+
+## ![](images/side8_kmeans.png){style="max-width: 54px; max-height: 30px" width="54"} K-means
+
+under construction............
 :::
 :::
 
 ::: {style="boxtext"}
-## ![](images/side9_sup.png){width="54"} Supervised Algorithms
+## ![](images/side9_sup.png){style="max-width: 54px; max-height: 30px" width="54"} Supervised Algorithms
 
 ::: {style="padding-left: 20px"}
-## ![](images/side10_nb.png){width="54"} Naive Bayes {#naive-bayes}
+## ![](images/side10_nb.png){style="max-width: 54px; max-height: 30px" width="54"} Naive Bayes {#naive-bayes}
 
-## ![](images/side11_svm.png){width="54"} Support Machine Vector {#support-machine-vector}
+under construction............
 
-## ![](images/side12_knn.png){width="54"} K-Nearest neighbor {#k-nearest-neighbor}
+## ![](images/side11_svm.png){style="max-width: 54px; max-height: 30px" width="54"} Support Machine Vector {#support-machine-vector}
 
-## ![](images/side13_rf.png){width="54"} Random Forest {#random-forest}
+under construction............
 
-## ![](images/side14_sg.png){width="54"} Stochastic Gradient Boosting {#stochastic-gradient-boosting}
+## ![](images/side12_knn.png){style="max-width: 54px; max-height: 30px" width="54"} K-Nearest neighbor {#k-nearest-neighbor}
 
-## ![](images/side6_som.png){width="54"} Self-Organizing Maps {#self-organizing-maps-1}
+under construction............
+
+## ![](images/side13_rf.png){style="max-width: 54px; max-height: 30px" width="54"} Random Forest {#random-forest}
+
+under construction............
+
+## ![](images/side14_sg.png){style="max-width: 54px; max-height: 30px" width="54"} Stochastic Gradient Boosting {#stochastic-gradient-boosting}
+
+under construction............
+
+## ![](images/side6_som.png){style="max-width: 54px; max-height: 30px" width="54"} Self-Organizing Maps {#self-organizing-maps-1}
+
+under construction............
 :::
 :::
 
 ::: boxtext
-## ![](images/side15_comp.png){width="54"} Compare and Combine Models
+## ![](images/side15_comp.png){style="max-width: 54px; max-height: 30px" width="54"} Compare and Combine Models
+
+under construction............
 
 ::: {style="padding: 20px"}
 Compare
@@ -682,4 +890,6 @@ Combine
 :::
 :::
 
-# Main-panel
+# Workflow examples
+
+under construction............

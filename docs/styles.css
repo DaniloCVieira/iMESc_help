@@ -84,3 +84,48 @@ display: inline-block;
 
   text-align: center;
 }
+
+#content{
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-text-size-adjust: 100%;
+    font-size: 14px;
+    line-height: 1.42857143;
+    font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
+    font-weight: normal;
+    color: black;
+    box-sizing: border-box;
+    height: 100%;
+    margin-left: 300px;
+    max-width: 1400px;
+    min-height: 100%;
+    padding: 1.618em 3.236em;
+    background: #fcfcfc;
+}
+
+
+.click-to-gif img {display: block;}
+
+.click-to-gif input[type=checkbox] {
+  position: absolute;
+  left: -100vw;
+}
+
+label.click-to-gif {
+  display: block;
+  float: left;
+  background: DimGrey no-repeat center center;
+  background-image: url('images/cog_button.png') ;
+}
+
+.click-to-gif:hover, .click-to-gif:focus-within {
+  background: DarkSlateGrey no-repeat center center;
+  background-image: url('images/cog_button.png');
+}
+.click-to-gif input[type=checkbox] + img {
+  opacity: 0;
+}
+.click-to-gif input[type=checkbox]:checked + img {
+  opacity: 1;
+}
+
+

@@ -117,7 +117,7 @@ The button shows up a modal dialog for the creation of a Datalist. All analytica
 
 -   **Numeric-Attribute**: file widget for uploading a csv file containing numeric variables. This file is required and must include observations in rows, and variables in columns. The first row must contain the variable headings, and the first column the observation labels. Columns containing characters are automatically transferred to the Factor-Attribute.
 
-![](gif/Create%20a%20Datalist0.gif)
+![Create Datalist - Upload](gif/Create%20a%20Datalist0.gif)
 
 -   **Factor-Attribute:** file widget for uploading a csv file. This file must include observations in rows, and categorical variables in columns. The first row must contain the variable headings, and the first column the observation labels. Although the Factor-Attribute is mandatory in the Datalists, uploading this file is optional. However, its use is highly recommended. Throughout the application, users can use this attribute to label, group and visualize results according to the levels of a pre-selected factor. If no file is uploaded, the Factor-Attribute will only consist of the IDs (labels) from the Numeric-Attribute. This attribute can later be replaced by a new one (widget 'Replace Factor-Attribute' in button).
 
@@ -156,6 +156,8 @@ This opion allows the user to insert the example data available in iMESc. When c
 -   nema_araca: 194 free-living marine nematode species (southeastern coast of Brazil).
 
 Both Datalists carry Coords-Attribute, Base-Shape and Layer Shape.
+
+![Create Datalist - Use example data](gif/Create%20a%20Datalist.gif)
 :::
 
 ------------------------------------------------------------------------
@@ -197,7 +199,7 @@ The trained models are saved inside the Datalist used as a predictor (X). Likewi
 :::
 
 ::: col-sm-6
-![](gif/Save_model.gif)
+![Train and save a model](gif/Save_model.gif)
 :::
 :::
 
@@ -205,7 +207,7 @@ The trained models are saved inside the Datalist used as a predictor (X). Likewi
 
 Save all analysis results by creating a savepoint, a single R object that can be downloaded and reloaded later to restore analysis output.
 
-![](gif/savepoint.gif)
+![Savepoint](gif/savepoint.gif)
 :::
 
 ------------------------------------------------------------------------
@@ -237,11 +239,11 @@ This drop-down button offers to the user a range of tools for editing Datalists.
 -   **SHP toolbox:** creates [Base-Shapes](#Shape), [Layer-Shapes](#Shape) and [Extra-Shape](#Shape)[s](#Extra-Shape).
 
 ::: {style="width: 50%"}
-![](gif/Exchange.gif)
+![Exchange Factor/Variables](gif/Exchange.gif)
 :::
 :::
 
-![](gif/Create_base_shape.gif){style="max-width: 50%"}
+![SHP tool box](gif/Create_base_shape.gif){style="max-" width="50%"}
 :::
 
 ------------------------------------------------------------------------
@@ -259,7 +261,7 @@ This drop-down button offers to the user a range of tools for editing Datalists.
 -   **Individual selection:** Link to select observations using Datalist IDs.
 :::
 
-![](gif/Filter%20by%20factors.gif)
+![Filter observations](gif/Filter%20by%20factors.gif)
 :::
 
 ------------------------------------------------------------------------
@@ -281,7 +283,7 @@ This drop-down button offers to the user a range of tools for editing Datalists.
 :::
 
 ::: {style="width: 30%"}
-![](images/filter_variables.png)
+![Filter variables](images/filter_variables.png)
 :::
 :::
 :::
@@ -378,7 +380,7 @@ This drop-down button offers to the user a range of tools for editing Datalists.
 :::
 
 ::: {style="width: 30%"}
-![](images/pre_3.png)
+![Transformations](images/pre_3.png)
 :::
 :::
 :::
@@ -403,7 +405,7 @@ Methods for completing the missing values with values estimated from the observe
 :::
 
 ::: col-sm-8
-![](gif/Data_imputation.gif)
+![Data imputation](gif/Data_imputation.gif)
 :::
 :::
 :::
@@ -436,7 +438,7 @@ Add partition as a factor in the Factor-Attribute. For the supervised ML methods
 :::
 
 ::: {style="width:50%"}
-![](gif/Data-partition.gif)
+![Data Partition](gif/Data-partition.gif)
 :::
 :::
 
@@ -458,7 +460,7 @@ The process involves two stages. First, collate individual cases of the Numeric-
 :::
 
 ::: {style="width: 100%"}
-![](gif/Aggregate.gif)
+![Aggregate](gif/Aggregate.gif)
 :::
 :::
 :::
@@ -474,7 +476,7 @@ Create customized palettes to be used along the graphical outputs.
 :::
 
 ::: {style="width: 40%"}
-![](gif/create_palette.gif)
+![Create Palette](gif/create_palette.gif)
 :::
 :::
 :::
@@ -522,7 +524,7 @@ This group of panels shows up when using the functionalities provided by ![](ima
 :::
 
 ::: {style="width: 50%"}
-![](images/track_changes.png)
+![Track-Changes](images/track_changes.png)
 :::
 :::
 
@@ -554,7 +556,7 @@ This group of panels shows up when using the functionalities provided by ![](ima
 :::
 
 ::: {style="max-width: 50%"}
-![](gif/Data_bank.gif)
+![Data Bank](gif/Data_bank.gif)
 :::
 :::
 
@@ -579,18 +581,18 @@ This group of panels shows up when using the functionalities provided by ![](ima
 
 ::: {style="display: flex"}
 ::: {style="max-width: 30%"}
-Data: shows number of rows, columns and missing values of the Numeric-Attribute;
+-   **Data**: shows number of rows, columns and missing values of the Numeric-Attribute;
 
-Variable: shows summary and a histogram for each variable in the Numeric-Attribute;
+-   **Variable**: shows summary and a histogram for each variable in the Numeric-Attribute;
 
-Factors: shows a summary of the Factor-Attribute and box-plot with the count of the Factors levels;
+-   **Factors**: shows a summary of the Factor-Attribute and box-plot with the count of the Factors levels;
 
-Datalist:: shows the Datalist structure.
+-   **Datalist**: shows the Datalist structure.
 :::
 
 <div>
 
-![](gif/Summaries.gif){style="padding: 20px"}
+![Summary](gif/Summaries.gif){style="padding: 20px"}
 
 </div>
 :::
@@ -604,7 +606,7 @@ Datalist:: shows the Datalist structure.
 
 <div>
 
-![](gif/Ridges.gif){style="padding: 20px"}
+![Ridges](gif/Ridges.gif){style="padding: 20px"}
 
 </div>
 :::
@@ -618,7 +620,7 @@ Datalist:: shows the Datalist structure.
 
 <div>
 
-![](gif/Scatter.gif){style="padding: 20px"}
+![Scatter](gif/Scatter.gif){style="padding: 20px"}
 
 </div>
 :::
@@ -636,7 +638,7 @@ Datalist:: shows the Datalist structure.
 
 <div>
 
-![](gif/Boxplot.gif){style="padding: 20px"}
+![MDS](gif/Boxplot.gif){style="padding: 20px"}
 
 </div>
 :::
@@ -668,7 +670,7 @@ Datalist:: shows the Datalist structure.
 
 <div>
 
-![](gif/PCA.gif){style="padding: 20px"}
+![PCA](gif/PCA.gif){style="padding: 20px"}
 
 </div>
 :::
@@ -686,7 +688,7 @@ Redundancy Analysis. This functionality uses the [rda](https://www.rdocumentatio
 
 <div>
 
-![](gif/RDA.gif){style="padding: 20px"}
+![RDA](gif/RDA.gif){style="padding: 20px"}
 
 </div>
 :::
@@ -706,33 +708,57 @@ This functionality implements the [segRDA](https://besjournals.onlinelibrary.wil
 
 <div>
 
-![](gif/segRDA.gif){style="padding: 20px"}
+![segRDA routine](gif/segRDA.gif){style="padding: 20px"}
 
 </div>
 :::
 
+::: boxtext
 ## ![](images/side3_map.png){style="max-width: 54px; max-height: 30px" width="54"} Spatial Tools
 
-under construction............
-
-::: {style="padding-left: 20px"}
 This module is intended for spatialization and therefore requires the Coors-Attributes attached to the chosen Datalist.
 
-After choosing a Datalist, choose the Attribute (Numeric or Variable) and then the variable/factor. Optionally, filters can be applied to plot observations corresponding to a chosen factor level.
+After choosing a Datalist, choose the Attribute (Numeric or Variable) and then the target: Numeric/Factor. Optionally, filters can be applied to plot observations corresponding to a chosen factor level.
 
-Map options include discretization (2D, 3D, 4D), interpolation (2D, Surface and Stack), and rasterization(2D, Surface and Stack).
+Map types include discretization (2D, 3D, 4D), interpolation (2D, Surface and Stack), and rasterization (2D, Surface and Stack). A wide range of customization options is available for all map types.
 
 ### Discrete
 
--   Data palette: the observation colors;
+Variable/factor are represented as symbols in the map. When target is the Numeric-Attribute, it is available the scale option (default), where the chosen symbol is represented as a point that varies on size and color according to the target data. Alternatively, points can be colored according to a selected factor.
+
+The 3D/4D option is also available for this type of maps. In this option, the target variable is plotted along a Z variable, which in turn can be colored by a selected factor.
+
+In the discrete map type, the Mantel correlogram is also available.
+
+![Discrete map - Factor-Attribute](gif/map_fac.gif)
+
+![Discrete map - Numeric Attribute](gif/map_discrete_numeric.gif)
+
+### Interpolation
+
+Variable/factor are represented as interpolated surface. When mapping the Numeric Attribute, the interpolation is performed using Inverse Distance Weighing (IDW), while for the Factor Attribute, it is performed using k-nearest neighbors (KNN). For both interpolation types, it is available tuning parameters.
+
+### Raster
+
+Mapping is performed by simple rasterization at the coordinates resolution. This options is only available for mapping Numeric-Attribute.
+
+### Surface and Stack
+
+These map types are available for Interpolated/Rasterized maps. Both options require at least two saved maps.
+
+-   The surface maps draws a perspective plot of a surface over the coordinates plane. The surface passes through the z values corresponding to all pairs of coordinates. Additionally, The surface can be colored according to a selected factor (4D).
+
+-   The stacked map combines multipe interploated/rasterized planes (for a common geographic area) to represent a integrated map. The collection of saved maps acts as layers in the stack, and their position along the z axis can be defined by the user.
+:::
+
+::: {style="padding-left: 20px"}
 
 -   Size: the symbol size;
 
     -   when target is Numeric
 
-    ```{=html}
     <!-- -->
-    ```
+
         -   Min: minimum size when scaling the target variable
 
         -   Max: maximum size when scaling the target variable
@@ -778,7 +804,7 @@ Map options include discretization (2D, 3D, 4D), interpolation (2D, Surface and 
     -   Border color
 
 ::: {style="padding-left: 20px"}
-Header:![](images/map_header.png){style="max- max-"}
+Header:
 
 -   **Y Datalist**: drop-down selector of the target Datalist
 

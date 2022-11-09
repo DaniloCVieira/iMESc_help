@@ -1,0 +1,21 @@
+
+
+
+
+Choose a method and prepare the Datalists accordingly
+
+For unsupervised methods, X is the Numeric Attribute.
+
+For classification model, X is the Numeric-Attribute* or Y is the Factor-Attribute. X and Y can come from the same Datalist or from different Datalists.
+
+For regression models: X and Y are Numeric-Attribute, and therefore must be different Datalists
+
+The Naive Bayes Algorithm also accepts X as a Factor-Attribute.
+
+Preprocess
+
+Fill in missing values, if any (Data imputation tool)
+
+For distance-based methods (e.g. PCA, SOM), it may be interesting to apply some transformation.
+
+For supervised methods, create data partition using XXXX: 

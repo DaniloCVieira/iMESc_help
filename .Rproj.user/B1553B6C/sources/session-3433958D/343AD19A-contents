@@ -1,0 +1,64 @@
+library(DT)
+library(dplyr)
+
+getRemoveButton <- function(n, idS = "", lab = "Pit") {
+  if (stringr::str_length(idS) > 0) idS <- paste0(idS, "-")
+  ret <- shinyInput(actionButton, n,
+                    'button_', label = "Remove",
+                    onclick = sprintf('Shiny.onInputChange(\"%sremove_button_%s\",  this.id)' ,idS, lab))
+  return (ret)
+}
+
+shinyInput <- function(FUN, n, id, ses, ...) {
+  as.character(FUN(paste0(id, n), ...))
+}
+
+ui = shinyUI(fluidPage(
+  fluidRow(DT::dataTableOutput("myTable")),
+  fluidRow(actionButton("addRow", label = "Add Row",
+                        icon = icon("plus"))))
+)
+
+server = function(input, output) {
+  
+  buttonCounter <- 3L
+  
+  values <- reactiveValues()
+  values$tab <- tibble(
+    Row = 1:3L,
+    id = 1:3L) %>%
+    rowwise() %>%
+    mutate(Remove = getRemoveButton(id, idS = "", lab = "Tab1"))
+  
+  proxyTable <- DT::dataTableProxy("tab")
+  
+  output$myTable <- DT::renderDataTable({
+    DT::datatable(values$tab,
+                  options = list(pageLength = 25,
+                                 dom        = "rt"),
+                  rownames = FALSE,
+                  escape   = FALSE,
+                  editable = TRUE)
+  })
+  
+  observeEvent(input$remove_button_Tab1, {
+    myTable <- values$tab
+    s <- as.numeric(strsplit(input$remove_button_Tab1, "_")[[1]][2])
+    myTable <- filter(myTable, id != s)
+    replaceData(proxyTable, myTable, resetPaging = FALSE)
+    values$tab <- myTable
+  })
+  observeEvent(input$addRow, {
+    buttonCounter <<- buttonCounter + 1L
+    myTable <- isolate(values$tab)
+    myTable <- bind_rows(
+      myTable,
+      tibble(Row = nrow(myTable) + 1) %>%
+        mutate(id = buttonCounter,
+               Remove = getRemoveButton(buttonCounter, idS = "", lab = "Tab1")))
+    replaceData(proxyTable, myTable, resetPaging = FALSE)
+    values$tab <- myTable
+  })
+}
+
+shinyApp(ui = ui, server = server)

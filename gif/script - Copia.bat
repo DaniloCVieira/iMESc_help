@@ -1,1 +1,0 @@
-for %%i in (*.gif) do ffmpeg -i "%%i" -c:v libx264 -preset veryslow -qp 0 -n "%%~ni.mp4"

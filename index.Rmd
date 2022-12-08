@@ -24,11 +24,13 @@ knitr::opts_chunk$set(echo = TRUE,
 ```
 
 <head>
- <script type="text/javascript"
+
+```{=html}
+<script type="text/javascript"
             src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
+```
 </head>
-
 
 This tutorial is under construction yet....
 
@@ -909,9 +911,9 @@ The `most important correlations` option returns npic variables with the highest
 #### 3. Predict
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| **3.1 Results:**                                                                                                                                                                                           | ::: {style="min-width: 600px"}                                                                                        |
+| **3.1 Results:**                                                                                                                                                                                           | ::: {style="min-width: 500px"}                                                                                        |
 |                                                                                                                                                                                                            | -   **Data predictions:** predicted values for the training data.                                                     |
-| ::: {style="max-width: 200px"}                                                                                                                                                                             |                                                                                                                       |
+| ::: {style="min-width: 150px"}                                                                                                                                                                             |                                                                                                                       |
 | Displays several prediction results, which can be downloaded as *.csv* or .*xlsx* file. For the options *Data predictions* and *Obs errors (X)*, is also possible to create a Datalist from these results. | -   **Obs errors (X):** Root-mean square (RMSE), R-squared and Mean Absolute error (MAE) per observation.             |
 | :::                                                                                                                                                                                                        |                                                                                                                       |
 |                                                                                                                                                                                                            | -   **Var errors (X):** RMSE, R-squared and MAE per variable.                                                         |

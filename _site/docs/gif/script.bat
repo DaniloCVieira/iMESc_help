@@ -1,0 +1,1 @@
+for %%i in (*.gif) do ffmpeg -i "%%i" -c:a aac -n "%%~ni.mp4"

@@ -2,11 +2,6 @@ body{
   color: black;
 }
 
-h1, h2, h3, h4, h5, h6, legend {
-    font-family: "Roboto Slab","ff-tisa-web-pro","Georgia",Arial,sans-serif;
-    font-weight: 700;
-    color: black;
-}
 
 #nav-top  {
     color: #05668D;
@@ -20,12 +15,14 @@ h1, h2, h3, h4, h5, h6, legend {
    content: ': an Interactive Machine learning App for Environmental Sciences';
     font-weight: normal;
 }
-#main h1, h2, h3, h4, h5, h6, legend {
-    font-family: 'Alata', sans-serif;
-    font-weight: 600;
+
+h1, h2, h3, h4, h5, h6, legend {
+    font-family: "Roboto Slab","ff-tisa-web-pro","Georgia",Arial,sans-serif;
+    font-weight: 700;
     color: black;
-     font-size: 25px;
 }
+
+
 .boxtext {
   background: WhiteSmoke;
 }
@@ -67,7 +64,7 @@ display: inline-block;
     text-align: center;
     padding: 0.809em;
     display: inline-block;
-    color: black;
+
     font-size: 100%;
     margin-top: 0px;
 
@@ -95,7 +92,7 @@ display: inline-block;
     color: black;
     box-sizing: border-box;
     height: 100%;
-    margin-left: 300px;
+    margin-left: 255px;
     max-width: 1400px;
     min-height: 100%;
     padding: 1.618em 3.236em;
@@ -129,3 +126,116 @@ label.click-to-gif {
 }
 
 
+
+
+
+
+.like {
+    display: block;
+    width: 110px;
+    height: 110px;
+    margin:0 auto;
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/349115/like_animation.png) 0 0 no-repeat;
+    background-size: 3000%;
+    animation: like-gif steps(28) 1s infinite both;
+}
+.pause {
+    animation-play-state: paused;
+}
+
+@keyframes like-gif {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+
+
+
+
+
+#main h1, h2, h3, h4, h5, h6, legend {
+    font-family: 'Alata', sans-serif;
+    font-weight: 600;
+
+     font-size: 25px;
+}
+.title{
+   padding-left: 40px;
+   background: none;
+   color: #05668D;
+}
+h1{
+  background-color: #05668D;
+   color: white;
+   padding: 5px;
+   padding-left: 20px;
+
+}
+
+
+h2{
+  font-size: 20px;
+   background-color: #696969;
+   color: white;
+   padding: 5px;
+}
+
+h3{
+    font-size: 18px;
+    border-bottom: 1px dashed gray;
+       padding: 5px;
+}
+h4{
+  font-size: 16px;
+}
+
+h5{
+  font-size: 15px;
+}
+
+
+#main ul li p:last-child{
+
+    padding-left: -10px;
+    margin-left: 0px;
+}
+.section {
+
+  padding: 20px;
+  margin-bottom: 20px;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-left: -20px;
+}
+.section .level2{
+   background: WhiteSmoke;
+   margin-top: 0px;
+}
+
+.section .level2 h2 {
+   margin-top: -20px;
+
+}
+.section .level3{
+      border: 1px solid Gainsboro;
+   background: white;
+   margin-top: 0px;
+}
+.section .level3 h3 {
+   margin-top: -20px;
+
+}
+
+.section .level5{
+      border: 1px dashed Gainsboro;
+   background: Gainsboro;
+   margin-top: 0px;
+}
+.section .level3 h5 {
+   margin-top: -20px;
+
+}

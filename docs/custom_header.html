@@ -1,0 +1,33 @@
+<script>
+  // Script para ajustar o deslocamento ao rolar
+  document.addEventListener('DOMContentLoaded', function() {
+    // Captura todos os links do TOC
+    var tocLinks = document.querySelectorAll('.section .toc a');
+
+    // Função para ajustar o deslocamento de rolagem
+    var adjustScrollPosition = function(event) {
+      // Evita o comportamento padrão do link
+      event.preventDefault();
+
+      // Captura o ID do elemento alvo
+      var targetId = this.getAttribute('href').substring(1);
+      var targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        // Calcula a nova posição de rolagem
+        var topPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 70;
+
+        // Rola a página para a nova posição
+        window.scrollTo({
+          top: topPosition,
+          behavior: 'smooth'
+        });
+      }
+    };
+
+    // Adiciona o ouvinte de evento a cada link do TOC
+    tocLinks.forEach(function(link) {
+      link.addEventListener('click', adjustScrollPosition);
+    });
+  });
+</script>

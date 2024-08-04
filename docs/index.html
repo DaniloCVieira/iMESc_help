@@ -1060,8 +1060,8 @@ available in iMESc.</div>
 <caption>Table S6.1 - Datalist Creation and Selection Based on Model
 Specifications</caption>
 <colgroup>
-<col width="58%" />
-<col width="41%" />
+<col width="74%" />
+<col width="25%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1072,20 +1072,25 @@ analytical method.</td>
 style="min-width: 400px;padding: 20px" width="300" /></td>
 </tr>
 <tr class="even">
-<td>For unsupervised methods, only Numeric-Attribute (X) is needed.</td>
+<td>For unsupervised methods, only Numeric-Attribute (X) is needed.
+iMESc automatically recognizes the Numeric-Attribute associated with the
+Datalist as (X).</td>
 <td><img src="images/imesc-essentials-unsup.gif"
 style="min-width: 400px;padding: 20px" width="400" /></td>
 </tr>
 <tr class="odd">
-<td>For classification models, both Numeric-Attribute (X) and
-Factor-Attribute (Y) are needed. X and Y can be from the same or
-different Datalists.</td>
+<td>For supervised classification models, both the Numeric-Attribute (X)
+and the Factor-Attribute (Y) are needed. iMESc automatically recognizes
+the Numeric-Attribute and Factor-Attribute associated with the Datalist
+as X and Y, respectively. X and Y can be from the same or different
+Datalists.</td>
 <td><img src="images/imesc-essentials-supervised_1.gif"
 style="min-width: 400px;padding: 20px" width="400" /></td>
 </tr>
 <tr class="even">
-<td>For regression models, X and Y are both Numeric-Attributes from
-different Datalists.</td>
+<td>For supervised regression models, X and Y are both
+Numeric-Attributes. iMESc automatically recognizes the
+Numeric-Attributes associated with the Datalist as both X and Y.</td>
 <td><img src="images/imesc-essentials-supervised-reg.gif"
 style="min-width: 400px;padding: 20px" width="400" /></td>
 </tr>
